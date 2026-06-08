@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Sun | Enterprise Management & Tech Integration Expert</title>
+    
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Vue 3 and GSAP -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Header / Navigation -->
+        <header :class="{ 'scrolled': scrolled }">
+            <nav>
+                <a href="index.html" class="logo">JAMES <span>SUN</span></a>
+                <ul class="nav-links" :class="{ 'active': menuActive }">
+                    <li :class="{ 'active': activePage === 'home' }">
+                        <a href="#home" @click="setActivePage('home')">Home</a>
+                    </li>
+                    <li :class="{ 'active': activePage === 'about' }">
+                        <a href="#about" @click="setActivePage('about')">About</a>
+                    </li>
+                    <li :class="{ 'active': activePage === 'portfolio' }">
+                        <a href="#portfolio" @click="setActivePage('portfolio')">Expertise</a>
+                    </li>
+                    <li :class="{ 'active': activePage === 'contact' }">
+                        <a href="#contact" @click="setActivePage('contact')">Contact</a>
+                    </li>
+                    <li class="language-selector">
+                        <select v-model="selectedLanguage" @change="changeLanguage">
+                            <option value="en">EN</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </li>
+                </ul>
+                <div class="menu-toggle" @click="toggleMenu">
+                    <i :class="menuActive ? 'fas fa-times' : 'fas fa-bars'"></i>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h1><span>Hello, I am</span>James Sun</h1>
+                    <h2>Enterprise Management &amp; Strategic Planning Expert | Leading innovation and technology integration for high-growth organizations.</h2>
+                    <div class="cta-group">
+                        <a href="#portfolio" class="cta-button">View Expertise</a>
+                        <a href="#contact" class="cta-button secondary">Contact Me</a>
+                    </div>
+                </div>
+                
+                <!-- Real-Time Clock Widget -->
+                <div class="hero-clock-panel">
+                    <div class="clock-widget">
+                        <div class="clock-header">
+                            <span class="clock-title">System Time</span>
+                            <span class="clock-status">
+                                <span class="clock-status-dot"></span>Live
+                            </span>
+                        </div>
+                        <div class="clock-time">
+                            <span>{{ formatTime.hours }}</span>
+                            <span class="colon">:</span>
+                            <span>{{ formatTime.minutes }}</span>
+                            <span class="colon">:</span>
+                            <span>{{ formatTime.seconds }}</span>
+                        </div>
+                        <div class="clock-date">{{ formatDate }}</div>
+                        <div class="clock-timezone">UTC/GMT+08:00 (CST)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Bridging Technology &amp; Leadership</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a seasoned business management consultant and technology strategy director with over a decade of experience guiding enterprises through digital transformation, product design, and architectural scalability.</p>
+                    <p>My unique value proposition lies at the intersection of business intelligence and systems development. I design holistic roadmaps that not only solve current engineering challenges but align directly with overall corporate growth objectives and market positioning.</p>
+                    <p>Leveraging agile methodologies, data-driven decisions, and an empathetic leadership style, I cultivate high-performance cultures capable of launching world-class software solutions.</p>
+                </div>
+                
+                <div class="about-features">
+                    <div class="feature-box">
+                        <i class="fas fa-compass feature-icon"></i>
+                        <h3>Strategic Planning</h3>
+                        <p>Defining clear business visions, setting measurable OKRs, and establishing long-term roadmaps.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i class="fas fa-laptop-code feature-icon"></i>
+                        <h3>Tech Integration</h3>
+                        <p>Bridging core technologies, software architecture, and modern clouds with legacy systems.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i class="fas fa-users feature-icon"></i>
+                        <h3>Leadership</h3>
+                        <p>Fostering agile development cultures and building cross-functional, highly collaborative teams.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i class="fas fa-chart-pie feature-icon"></i>
+                        <h3>Data Intelligence</h3>
+                        <p>Using analytics pipelines and operational insights to optimize efficiency and drive growth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery / Portfolio Section -->
+        <section id="portfolio" class="gallery">
+            <div class="gallery-container">
+                <div class="section-header">
+                    <h2>Core Focus Areas</h2>
+                    <p>Strategic Pillars &amp; Competencies</p>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div v-for="image in galleryImages" :key="image.src" class="gallery-item">
+                        <img :src="image.src" :alt="image.alt">
+                        <div class="gallery-info">
+                            <h3>{{ image.title }}</h3>
+                            <p>{{ image.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="contact-container">
+                <div class="section-header">
+                    <h2>Get In Touch</h2>
+                    <p>Let's collaborate on your next innovation</p>
+                </div>
+                <p style="margin-bottom: 30px; font-size: 16px; color: var(--text-color);">
+                    Whether you are interested in consultation, looking for leadership roles, or seeking technical advising, my inbox is always open.
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:james.sun@example.com" class="contact-btn">
+                        <i class="fas fa-envelope"></i> Email Me
+                    </a>
+                    <a href="https://linkedin.com/in/jamessun" target="_blank" class="contact-btn">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/jamessun" target="_blank" class="contact-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; {{ currentYear }} James Sun. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
