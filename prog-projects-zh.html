@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>程式語言課程實作 | James Sun</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        .projects-page {
+            padding: 140px 24px 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 80vh;
+        }
+
+        .projects-page .section-header {
+            margin-bottom: 50px;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .project-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px 30px;
+            background-color: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 17px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .project-btn:hover {
+            background-color: white;
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+            color: var(--accent-color);
+        }
+
+        .project-btn .btn-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .project-btn .btn-num {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent-color);
+            background-color: rgba(2, 132, 199, 0.1);
+            padding: 4px 12px;
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .project-btn .btn-icon {
+            font-size: 20px;
+            color: var(--text-light);
+            transition: transform 0.3s ease;
+        }
+
+        .project-btn:hover .btn-icon {
+            transform: translateX(6px);
+            color: var(--accent-color);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 40px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header :class="{ 'scrolled': scrolled }">
+            <nav>
+                <a href="index-zh.html" class="logo">JAMES <span>SUN</span></a>
+                <ul class="nav-links" :class="{ 'active': menuActive }">
+                    <li><a href="index-zh.html">首頁</a></li>
+                    <li><a href="index-zh.html#about">關於我</a></li>
+                    <li><a href="index-zh.html#portfolio">專業領域</a></li>
+                    <li><a href="index-zh.html#contact">聯絡我</a></li>
+                    <li class="language-selector">
+                        <select v-model="selectedLanguage" @change="changeLanguage">
+                            <option value="en">EN</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </li>
+                </ul>
+                <div class="menu-toggle" @click="toggleMenu">
+                    <i :class="menuActive ? 'fas fa-times' : 'fas fa-bars'"></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="projects-page">
+            <a href="index-zh.html#portfolio" class="back-link">
+                <i class="fas fa-arrow-left"></i> 返回專業領域
+            </a>
+
+            <div class="section-header">
+                <h2>程式語言實作</h2>
+                <p>程式語言課程作品</p>
+            </div>
+
+            <div class="project-list">
+                <a href="ex0602.html" class="project-btn">
+                    <span class="btn-left">
+                        <span class="btn-num">HW1</span>
+                        <span>變數(數值資料)</span>
+                    </span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </a>
+                <a href="#" class="project-btn">
+                    <span class="btn-left">
+                        <span class="btn-num">02</span>
+                        <span>待更新</span>
+                    </span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </a>
+                <a href="#" class="project-btn">
+                    <span class="btn-left">
+                        <span class="btn-num">03</span>
+                        <span>待更新</span>
+                    </span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </a>
+                <a href="#" class="project-btn">
+                    <span class="btn-left">
+                        <span class="btn-num">04</span>
+                        <span>待更新</span>
+                    </span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </a>
+                <a href="#" class="project-btn">
+                    <span class="btn-left">
+                        <span class="btn-num">05</span>
+                        <span>待更新</span>
+                    </span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; {{ currentYear }} James Sun. 版權所有。</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/jamessun0919-ops" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    scrolled: false,
+                    menuActive: false,
+                    selectedLanguage: 'zh',
+                    currentYear: new Date().getFullYear()
+                }
+            },
+            methods: {
+                handleScroll() {
+                    this.scrolled = window.scrollY > 50;
+                },
+                toggleMenu() {
+                    this.menuActive = !this.menuActive;
+                },
+                changeLanguage() {
+                    if (this.selectedLanguage === 'en') {
+                        window.location.href = 'prog-projects.html';
+                    }
+                }
+            },
+            mounted() {
+                window.addEventListener('scroll', this.handleScroll);
+            },
+            unmounted() {
+                window.removeEventListener('scroll', this.handleScroll);
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

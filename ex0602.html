@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0602Ex01 - 秒數換算 | Python Work Platform</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+    <style>
+        :root {
+            --code-bg: #1e1e2e;
+            --panel-bg: #f8f9fc;
+            --border-light: #e2e8f0;
+        }
+
+        .pw-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 24px;
+        }
+
+        .description-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-color);
+            white-space: pre-wrap;
+        }
+
+        .description-content p {
+            margin-bottom: 8px;
+        }
+
+        .requirements-box {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 60px;
+        }
+
+        .requirements-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .requirements-box li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            color: var(--text-color);
+        }
+
+        .requirements-box li:last-child {
+            border-bottom: none;
+        }
+
+        .requirements-box li i {
+            color: #10b981;
+            font-size: 16px;
+            width: 20px;
+        }
+
+        .code-playground {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .code-panel {
+            background: var(--code-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .code-panel .panel-header {
+            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .code-panel .panel-header span {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .code-panel .panel-header .dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .code-panel .panel-header .dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .code-panel .panel-header .dots .red { background: #ff5f57; }
+        .code-panel .panel-header .dots .yellow { background: #ffbd2e; }
+        .code-panel .panel-header .dots .green { background: #28c840; }
+
+        .code-editor {
+            width: 100%;
+            min-height: 320px;
+            padding: 20px;
+            background: transparent;
+            border: none;
+            color: #e0e0e0;
+            font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            resize: vertical;
+            outline: none;
+            tab-size: 4;
+        }
+
+        .code-editor::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .output-panel {
+            background: var(--code-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .output-panel .panel-header {
+            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .output-panel .panel-header span {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .output-content {
+            padding: 20px;
+            min-height: 320px;
+            color: #e0e0e0;
+            font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            overflow: auto;
+        }
+
+        .output-content .empty-state {
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .run-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+
+        .run-btn {
+            padding: 14px 36px;
+            background: #28c840;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .run-btn:hover {
+            background: #1fa835;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 200, 64, 0.3);
+        }
+
+        .run-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .reset-btn {
+            padding: 14px 24px;
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            border-color: var(--text-color);
+            color: var(--text-color);
+        }
+
+        .status-badge {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-left: auto;
+        }
+
+        .status-badge.ready {
+            background: rgba(40, 200, 64, 0.1);
+            color: #28c840;
+        }
+
+        .status-badge.running {
+            background: rgba(255, 189, 46, 0.1);
+            color: #ffbd2e;
+        }
+
+        .status-badge.error {
+            background: rgba(255, 95, 87, 0.1);
+            color: #ff5f57;
+        }
+
+        @media (max-width: 768px) {
+            .code-playground {
+                grid-template-columns: 1fr;
+            }
+
+            .run-bar {
+                flex-wrap: wrap;
+            }
+
+            .status-badge {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header :class="{ 'scrolled': scrolled }">
+            <nav>
+                <a href="index-zh.html" class="logo">JAMES <span>SUN</span></a>
+                <ul class="nav-links" :class="{ 'active': menuActive }">
+                    <li><a href="index-zh.html">首頁</a></li>
+                    <li><a href="index-zh.html#about">關於我</a></li>
+                    <li><a href="index-zh.html#portfolio">專業領域</a></li>
+                    <li><a href="index-zh.html#contact">聯絡我</a></li>
+                    <li class="language-selector">
+                        <select v-model="selectedLanguage" @change="changeLanguage">
+                            <option value="en">EN</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </li>
+                </ul>
+                <div class="menu-toggle" @click="toggleMenu">
+                    <i :class="menuActive ? 'fas fa-times' : 'fas fa-bars'"></i>
+                </div>
+            </nav>
+        </header>
+
+        <div class="pw-container" style="padding-top: 100px;">
+            <!-- 1. Title -->
+            <section style="margin-bottom: 40px;">
+                <div class="section-label">學習目標</div>
+                <h2 class="section-title">Numbers - 數值資料的變換與計算</h2>
+            </section>
+
+            <!-- 2. Feature Description -->
+            <section style="margin-bottom: 40px;">
+                <div class="section-label">功能說明</div>
+                <div class="requirements-box">
+                    <div class="description-content">
+                        <p>讓用戶輸入一個整數秒，計算？天？時？分？秒</p>
+                        <p>輸出格式：ＸＸＸ秒＝Ｘ天Ｘ時Ｘ分Ｘ秒</p>
+                        <p>進階運用：計算停車費用（半小時Ｘ元，單日最高Ｘ元）</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Input fields + 4. Result output -->
+            <section style="margin-bottom: 60px;">
+                <div class="section-label">程式碼工作區</div>
+
+                <div class="code-playground">
+                    <div class="code-panel">
+                        <div class="panel-header">
+                            <div class="dots">
+                                <span class="red"></span>
+                                <span class="yellow"></span>
+                                <span class="green"></span>
+                            </div>
+                            <span>0602Ex01.py</span>
+                        </div>
+                        <textarea
+                            class="code-editor"
+                            v-model="code"
+                            placeholder="# 在此輸入 Python 程式碼..."
+                            spellcheck="false"
+                        ></textarea>
+                    </div>
+
+                    <div class="output-panel">
+                        <div class="panel-header">
+                            <span>輸出結果</span>
+                            <span v-if="execTime !== null" style="font-size:11px; color: rgba(255,255,255,0.3);">
+                                {{ execTime }}ms
+                            </span>
+                        </div>
+                        <div class="run-bar" style="padding: 12px 20px; margin: 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <button class="run-btn" @click="runCode" :disabled="running" style="padding: 10px 24px; font-size: 13px;">
+                                <i :class="running ? 'fas fa-spinner fa-spin' : 'fas fa-play'"></i>
+                                {{ running ? '執行中...' : '執行' }}
+                            </button>
+                            <a href="prog-projects-zh.html" class="reset-btn" style="padding: 10px 20px; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;"><i class="fas fa-list"></i> 回到作業列表</a>
+                            <span :class="['status-badge', statusClass]" style="margin-left: auto;">{{ statusText }}</span>
+                        </div>
+                        <div class="output-content">
+                            <template v-if="output !== ''">
+                                <span style="color: #e0e0e0;">{{ output }}</span>
+                                <span v-if="error" style="color: #ff5f57;">{{ error }}</span>
+                            </template>
+                            <span v-else class="empty-state">按 ▶ 執行 檢視輸出結果</span>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- 5. Requirements -->
+            <section style="margin-bottom: 60px;">
+                <div class="requirements-box">
+                    <h3 style="margin-bottom: 16px; color: var(--primary-color);">📋 使用需求</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 支援現代瀏覽器（Chrome、Firefox、Edge、Safari）</li>
+                        <li><i class="fas fa-check-circle"></i> 需啟用 JavaScript</li>
+                        <li><i class="fas fa-check-circle"></i> 使用自訂輕量 Python 轉譯器，無需下載額外環境</li>
+                        <li><i class="fas fa-check-circle"></i> 所有程式碼僅在本地瀏覽器中執行，不會上傳至伺服器</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; {{ currentYear }} James Sun.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/jamessun0919-ops" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        // ─── Lightweight Python-to-JS Runner ───
+        const _pyOutput = [];
+
+        function _pyPrint(...args) {
+            const line = args.map(a => {
+                if (typeof a === 'string') return a;
+                if (Array.isArray(a)) return '[' + a.map(x => JSON.stringify(x)).join(', ') + ']';
+                return JSON.stringify(a);
+            }).join(' ');
+            _pyOutput.push(line);
+        }
+
+        function _pyInput(promptText) {
+            return prompt(promptText || '') || '';
+        }
+
+        function _pyRange(n) {
+            return [...Array(n).keys()];
+        }
+
+        function _pyLen(x) { return x.length; }
+
+        function _pyInt(x) { return parseInt(x, 10); }
+
+        // Transform Python indent blocks → JS { } blocks
+        function transformPython(code) {
+            const lines = code.split('\n');
+            const result = [];
+            let prevIndent = 0;
+
+            for (let raw of lines) {
+                const trimmed = raw.trimEnd();
+                const indent = raw.length - trimmed.length;
+
+                if (trimmed === '' || trimmed.startsWith('#')) {
+                    result.push('');
+                    continue;
+                }
+
+                let line = trimmed;
+
+                // f-string → template literal
+                if (line.includes('f"')) {
+                    line = line.replace(/f"((?:[^"\\]|\\.)*)"/g, (_, inner) => {
+                        return '`' + inner.replace(/\{([^}]+)\}/g, (_, expr) => {
+                            return '${' + expr.trim() + '}';
+                        }) + '`';
+                    });
+                }
+
+                // print → _pyPrint
+                line = line.replace(/^print\((.*)\)$/, '_pyPrint($1)');
+
+                // input → _pyInput
+                line = line.replace(/input\(([^)]*)\)/g, '_pyInput($1)');
+
+                // def → function
+                line = line.replace(/^def (\w+)\((.*)\):$/, 'function $1($2) {');
+
+                // elif → else if
+                line = line.replace(/^elif (.+):$/, '} else if ($1) {');
+
+                // if → if
+                line = line.replace(/^if (.+):$/, 'if ($1) {');
+
+                // else: → } else {
+                line = line.replace(/^else:$/, '} else {');
+
+                // for → for...of
+                line = line.replace(/^for (\w+) in (.+):$/, 'for (let $1 of $2) {');
+
+                // while → while
+                line = line.replace(/^while (.+):$/, 'while ($1) {');
+
+                // return
+                line = line.replace(/^return (.+)$/, 'return $1');
+
+                // int → _pyInt
+                line = line.replace(/\bint\(/g, '_pyInt(');
+
+                // and → &&
+                line = line.replace(/\band\b/g, '&&');
+
+                // or → ||
+                line = line.replace(/\bor\b/g, '||');
+
+                // not → !
+                line = line.replace(/\bnot\b/g, '!');
+
+                // Handle indentation
+                if (indent < prevIndent) {
+                    const nClose = Math.round((prevIndent - indent) / 4);
+                    for (let i = 0; i < nClose; i++) {
+                        result.push('}');
+                    }
+                }
+
+                result.push(line);
+                prevIndent = indent;
+            }
+
+            const nClose = Math.round(prevIndent / 4);
+            for (let i = 0; i < nClose; i++) {
+                result.push('}');
+            }
+
+            return result.join('\n');
+        }
+
+        function runPythonCode(code) {
+            _pyOutput.length = 0;
+            try {
+                const jsCode = transformPython(code);
+                const wrapped = `
+                    const print = _pyPrint;
+                    const input = _pyInput;
+                    const range = _pyRange;
+                    const len = _pyLen;
+                    const int = _pyInt;
+
+                    ${jsCode}
+                `;
+                const fn = new Function('_pyPrint', '_pyInput', '_pyRange', '_pyLen', '_pyInt', wrapped);
+                fn(_pyPrint, _pyInput, _pyRange, _pyLen, _pyInt);
+                return { output: _pyOutput.join('\n'), error: null };
+            } catch (err) {
+                return { output: '', error: err.message };
+            }
+        }
+
+        const EXEC_CODE = `#取得資料
+tot_secs = int(input("請輸入待計算的秒數："))
+#取不足分的秒數
+rem_secs = tot_secs % 60
+#總分鐘數等於全部秒數減去不足一分鐘的秒數後,再換算為分鐘數
+tot_mins = int((tot_secs - rem_secs)/60)
+#不足小時的分鐘數
+rem_mins = tot_mins % 60
+#總小時數等於全部分鐘數減去不足一小時的分鐘數後,再換算為小時數
+tot_hours = int((tot_mins - rem_mins)/60)
+#不足一天的小時數
+rem_hours = tot_hours % 24
+#總天數等於全部小時數減去不足一天的小時數後，再換算為總天數
+tot_days = int((tot_hours - rem_hours)/24)
+#輸出最後格式
+print(tot_secs,"秒可換算為",tot_days,"天",rem_hours,"小時",rem_mins,"分鐘",rem_secs,"秒")`;
+
+        createApp({
+            data() {
+                return {
+                    scrolled: false,
+                    menuActive: false,
+                    selectedLanguage: 'zh',
+                    code: EXEC_CODE,
+                    output: '',
+                    error: '',
+                    running: false,
+                    execTime: null,
+                    currentYear: new Date().getFullYear()
+                }
+            },
+            computed: {
+                statusClass() {
+                    if (this.running) return 'running';
+                    if (this.error) return 'error';
+                    return 'ready';
+                },
+                statusText() {
+                    if (this.running) return '執行中';
+                    if (this.error) return '執行錯誤';
+                    return '就緒';
+                }
+            },
+            methods: {
+                toggleMenu() {
+                    this.menuActive = !this.menuActive;
+                },
+                handleScroll() {
+                    this.scrolled = window.scrollY > 50;
+                },
+                changeLanguage() {
+                    if (this.selectedLanguage === 'en') {
+                        window.location.href = 'ex0602.html';
+                    }
+                },
+                resetCode() {
+                    this.code = '';
+                    this.output = '';
+                    this.error = '';
+                    this.execTime = null;
+                },
+                runCode() {
+                    if (this.running) return;
+                    this.running = true;
+                    this.error = '';
+                    this.output = '';
+                    this.execTime = null;
+
+                    const start = performance.now();
+                    try {
+                        const result = runPythonCode(this.code);
+                        this.execTime = Math.round((performance.now() - start) * 10) / 10;
+                        if (result.error) {
+                            this.error = result.error;
+                        } else if (result.output) {
+                            this.output = result.output;
+                        } else {
+                            this.output = '(程式執行完畢，無輸出結果)';
+                        }
+                    } catch (err) {
+                        this.error = err.message;
+                        this.execTime = Math.round((performance.now() - start) * 10) / 10;
+                    } finally {
+                        this.running = false;
+                    }
+                }
+            },
+            mounted() {
+                window.addEventListener('scroll', this.handleScroll);
+                this.$nextTick(() => Prism.highlightAll());
+            },
+            unmounted() {
+                window.removeEventListener('scroll', this.handleScroll);
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

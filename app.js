@@ -3,8 +3,8 @@ const { createApp } = Vue;
 const isZh = document.documentElement.lang.startsWith('zh');
 
 const galleryImagesData = isZh ? [
-    { title: '領導力與戰略', description: '制定宏偉藍圖，帶領團隊實現可持續的業務增長與突破。', src: 'img/leadership.svg', alt: '領導力與戰略' },
-    { title: '項目管理', description: '運用敏捷開發流程，確保項目按時且高質量交付。', src: 'img/project_management.svg', alt: '項目管理' },
+    { title: '人工智慧課程實作', src: 'img/AIwork.png', alt: '人工智慧課程實作' },
+    { title: '程式語言課程實作', src: 'img/PythonWork.jpg', alt: '程式語言課程實作' },
     { title: '數據驅動決策', description: '建立數據分析管道，以客觀洞察力指導企業發展。', src: 'img/data_decision.svg', alt: '數據驅動決策' },
     { title: '創新與轉型', description: '推動數位化流程轉型，提升企業在變革市場中的競爭力。', src: 'img/innovation.svg', alt: '創新與轉型' },
     { title: '信息技術整合', description: '融合最先進的雲端架構與服務，優化現有 IT 系統。', src: 'img/it_integration.svg', alt: '信息技術整合' },
@@ -12,8 +12,8 @@ const galleryImagesData = isZh ? [
     { title: '運營優化', description: '重塑業務流程，降低營運成本，提升日常運作效率。', src: 'img/operational_optimization.svg', alt: '運營優化' },
     { title: '跨學科專業整合', description: '融合管理戰略與硬核軟體技術，提供全面的專家級洞察。', src: 'img/interdisciplinary.svg', alt: '跨學科專業整合' }
 ] : [
-    { title: 'Leadership & Strategy', description: 'Formulating vision and directing teams to achieve sustainable business growth.', src: 'img/leadership.svg', alt: 'Leadership & Strategy' },
-    { title: 'Project Management', description: 'Employing agile frameworks to guarantee timely and high-quality deliveries.', src: 'img/project_management.svg', alt: 'Project Management' },
+    { title: 'AI Course Projects', src: 'img/AIwork.png', alt: 'AI Course Projects' },
+    { title: 'Programming Language Projects', src: 'img/PythonWork.jpg', alt: 'Programming Language Projects' },
     { title: 'Data-Driven Decision Making', description: 'Establishing data pipelines to guide enterprise steps with objective metrics.', src: 'img/data_decision.svg', alt: 'Data-Driven Decision Making' },
     { title: 'Innovation & Transformation', description: 'Driving digital transformation processes to enhance competitiveness.', src: 'img/innovation.svg', alt: 'Innovation & Transformation' },
     { title: 'Information Technology', description: 'Integrating modern cloud infrastructure with core enterprise systems.', src: 'img/it_integration.svg', alt: 'Information Technology' },
@@ -85,6 +85,13 @@ createApp({
         setActivePage(pageId) {
             this.activePage = pageId;
             this.menuActive = false;
+        },
+        handleGalleryClick(image) {
+            if (image.title === '人工智慧課程實作' || image.title === 'AI Course Projects') {
+                window.location.href = isZh ? 'ai-projects-zh.html' : 'ai-projects.html';
+            } else if (image.title === '程式語言課程實作' || image.title === 'Programming Language Projects') {
+                window.location.href = isZh ? 'prog-projects-zh.html' : 'prog-projects.html';
+            }
         },
         changeLanguage() {
             if (this.selectedLanguage === 'en') {

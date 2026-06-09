@@ -97,27 +97,8 @@
                     <p>Leveraging agile methodologies, data-driven decisions, and an empathetic leadership style, I cultivate high-performance cultures capable of launching world-class software solutions.</p>
                 </div>
                 
-                <div class="about-features">
-                    <div class="feature-box">
-                        <i class="fas fa-compass feature-icon"></i>
-                        <h3>Strategic Planning</h3>
-                        <p>Defining clear business visions, setting measurable OKRs, and establishing long-term roadmaps.</p>
-                    </div>
-                    <div class="feature-box">
-                        <i class="fas fa-laptop-code feature-icon"></i>
-                        <h3>Tech Integration</h3>
-                        <p>Bridging core technologies, software architecture, and modern clouds with legacy systems.</p>
-                    </div>
-                    <div class="feature-box">
-                        <i class="fas fa-users feature-icon"></i>
-                        <h3>Leadership</h3>
-                        <p>Fostering agile development cultures and building cross-functional, highly collaborative teams.</p>
-                    </div>
-                    <div class="feature-box">
-                        <i class="fas fa-chart-pie feature-icon"></i>
-                        <h3>Data Intelligence</h3>
-                        <p>Using analytics pipelines and operational insights to optimize efficiency and drive growth.</p>
-                    </div>
+                <div class="about-image">
+                    <img src="img/MCD01.JPG" alt="James Sun" style="width: 100%; border-radius: 16px; box-shadow: var(--card-shadow);">
                 </div>
             </div>
         </section>
@@ -131,7 +112,7 @@
                 </div>
                 
                 <div class="gallery-grid">
-                    <div v-for="image in galleryImages" :key="image.src" class="gallery-item">
+                    <div v-for="image in galleryImages" :key="image.src" class="gallery-item" @click="handleGalleryClick(image)">
                         <img :src="image.src" :alt="image.alt">
                         <div class="gallery-info">
                             <h3>{{ image.title }}</h3>
@@ -159,7 +140,7 @@
                     <a href="https://linkedin.com/in/jamessun" target="_blank" class="contact-btn">
                         <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
-                    <a href="https://github.com/jamessun" target="_blank" class="contact-btn">
+                    <a href="https://github.com/jamessun0919-ops" target="_blank" class="contact-btn">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
@@ -172,7 +153,7 @@
             <div class="social-icons">
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/jamessun0919-ops" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </footer>
     </div>

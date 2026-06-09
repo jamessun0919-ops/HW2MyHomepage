@@ -97,27 +97,8 @@
                     <p>利用敏捷方法、數據驅動決策和同理心領導風格，我致力於培養高績效團隊，順利推出世界一流的軟體解決方案。</p>
                 </div>
                 
-                <div class="about-features">
-                    <div class="feature-box">
-                        <i class="fas fa-compass feature-icon"></i>
-                        <h3>戰略規劃</h3>
-                        <p>制定清晰的商業願景，設定可衡量的 OKR，並建立長期的發展路線圖。</p>
-                    </div>
-                    <div class="feature-box">
-                        <i class="fas fa-laptop-code feature-icon"></i>
-                        <h3>技術整合</h3>
-                        <p>將核心技術、軟體架構及現代雲端平台與現有的企業系統進行深度融合。</p>
-                    </div>
-                    <div class="feature-box">
-                        <i class="fas fa-users feature-icon"></i>
-                        <h3>團隊領導</h3>
-                        <p>倡導敏捷開發文化，打造跨職能且高度協作的高效執行團隊。</p>
-                    </div>
-                    <div class="feature-box">
-                        <i class="fas fa-chart-pie feature-icon"></i>
-                        <h3>數據智能</h3>
-                        <p>利用分析管道和運營洞察力來優化決策流程，提升運營效率並驅動增長。</p>
-                    </div>
+                <div class="about-image">
+                    <img src="img/MCD01.JPG" alt="James Sun" style="width: 100%; border-radius: 16px; box-shadow: var(--card-shadow);">
                 </div>
             </div>
         </section>
@@ -131,7 +112,7 @@
                 </div>
                 
                 <div class="gallery-grid">
-                    <div v-for="image in galleryImages" :key="image.src" class="gallery-item">
+                    <div v-for="image in galleryImages" :key="image.src" class="gallery-item" @click="handleGalleryClick(image)">
                         <img :src="image.src" :alt="image.alt">
                         <div class="gallery-info">
                             <h3>{{ image.title }}</h3>
@@ -159,7 +140,7 @@
                     <a href="https://linkedin.com/in/jamessun" target="_blank" class="contact-btn">
                         <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
-                    <a href="https://github.com/jamessun" target="_blank" class="contact-btn">
+                    <a href="https://github.com/jamessun0919-ops" target="_blank" class="contact-btn">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
@@ -172,7 +153,7 @@
             <div class="social-icons">
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/jamessun0919-ops" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </footer>
     </div>
