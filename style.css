@@ -181,7 +181,7 @@ nav {
 /* Hero Section */
 .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,7 +190,7 @@ nav {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 120px 24px 80px;
+    padding: 100px 24px 60px;
     overflow: hidden;
 }
 
