@@ -26,11 +26,11 @@
                     <li :class="{ 'active': activePage === 'home' }">
                         <a href="#home" @click="setActivePage('home')">首頁</a>
                     </li>
-                    <li :class="{ 'active': activePage === 'about' }">
-                        <a href="#about" @click="setActivePage('about')">關於我</a>
-                    </li>
                     <li :class="{ 'active': activePage === 'portfolio' }">
                         <a href="#portfolio" @click="setActivePage('portfolio')">專業領域</a>
+                    </li>
+                    <li :class="{ 'active': activePage === 'about' }">
+                        <a href="#about" @click="setActivePage('about')">關於我</a>
                     </li>
                     <li :class="{ 'active': activePage === 'contact' }">
                         <a href="#contact" @click="setActivePage('contact')">聯絡我</a>
@@ -83,26 +83,6 @@
             </div>
         </section>
 
-        <!-- 關於我區域 -->
-        <section id="about" class="about">
-            <div class="section-header">
-                <h2>關於我</h2>
-                <p>連結技術與領導力</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <p>我是一位擁有十多年經驗的資深業務管理顧問和技術戰略總監，擅長協助企業進行數位轉型、產品設計與架構擴展。</p>
-                    <p>我獨特的價值主張在於商業智能與系統開發的交會處。我設計的整體路線圖不僅能解決當前的工程挑戰，還能與企業的整體增長目標和市場定位直接掛鉤。</p>
-                    <p>利用敏捷方法、數據驅動決策和同理心領導風格，我致力於培養高績效團隊，順利推出世界一流的軟體解決方案。</p>
-                </div>
-                
-                <div class="about-image">
-                    <img src="img/MCD01.JPG" alt="James Sun" style="width: 100%; border-radius: 16px; box-shadow: var(--card-shadow);">
-                </div>
-            </div>
-        </section>
-
         <!-- 專業領域 / 畫廊區域 -->
         <section id="portfolio" class="gallery">
             <div class="gallery-container">
@@ -119,6 +99,26 @@
                             <p>{{ image.description }}</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 關於我區域 -->
+        <section id="about" class="about">
+            <div class="section-header">
+                <h2>關於我</h2>
+                <p>連結技術與領導力</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>我是一位擁有十多年經驗的資深業務管理顧問和技術戰略總監，擅長協助企業進行數位轉型、產品設計與架構擴展。</p>
+                    <p>我獨特的價值主張在於商業智能與系統開發的交會處。我設計的整體路線圖不僅能解決當前的工程挑戰，還能與企業的整體增長目標和市場定位直接掛鉤。</p>
+                    <p>利用敏捷方法、數據驅動決策和同理心領導風格，我致力於培養高績效團隊，順利推出世界一流的軟體解決方案。</p>
+                </div>
+                
+                <div class="about-image">
+                    <img src="img/MCD01.JPG" alt="James Sun" style="width: 100%; border-radius: 16px; box-shadow: var(--card-shadow);">
                 </div>
             </div>
         </section>

@@ -64,7 +64,7 @@ createApp({
             this.scrolled = window.scrollY > 50;
             
             // Highlight current section in navbar based on scroll position
-            const sections = ['home', 'about', 'portfolio', 'contact'];
+            const sections = ['home', 'portfolio', 'about', 'contact'];
             const scrollPos = window.scrollY + 150; // offset for nav header height
             
             for (const sectionId of sections) {
