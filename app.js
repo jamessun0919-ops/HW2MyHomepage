@@ -4,7 +4,7 @@ const isZh = document.documentElement.lang.startsWith('zh');
 
 const galleryImagesData = isZh ? [
     { title: '人工智慧課程實作', subtitle: '陳煥老師指導', src: 'img/AIwork.png', alt: '人工智慧課程實作' },
-    { title: '程式語言課程實作', src: 'img/PythonWork.jpg', alt: '程式語言課程實作' },
+    { title: '程式語言課程實作', subtitle: '蔡正一老師指導', src: 'img/PythonWork.jpg', alt: '程式語言課程實作' },
     { title: '職訓課程成果專案', description: '', src: 'img/FinalProject.jpg', alt: '職訓課程成果專案' },
     { title: '邏輯、謎題、思考', description: '', src: 'img/Mystery.png', alt: '邏輯、謎題、思考' },
     { title: '信息技術整合', description: '融合最先進的雲端架構與服務，優化現有 IT 系統。', src: 'img/it_integration.svg', alt: '信息技術整合' },
@@ -13,7 +13,7 @@ const galleryImagesData = isZh ? [
     { title: '跨學科專業整合', description: '融合管理戰略與硬核軟體技術，提供全面的專家級洞察。', src: 'img/interdisciplinary.svg', alt: '跨學科專業整合' }
 ] : [
     { title: 'AI Course Projects', subtitle: 'Instructed by Prof. Huan Chen', src: 'img/AIwork.png', alt: 'AI Course Projects' },
-    { title: 'Programming Language Projects', src: 'img/PythonWork.jpg', alt: 'Programming Language Projects' },
+    { title: 'Programming Language Projects', subtitle: 'Instructed by Prof. Cheng-Yi Tsai', src: 'img/PythonWork.jpg', alt: 'Programming Language Projects' },
     { title: 'Vocational Training Showcase Project', description: '', src: 'img/FinalProject.jpg', alt: 'Vocational Training Showcase Project' },
     { title: 'Logic, Puzzles, Thinking', description: '', src: 'img/Mystery.png', alt: 'Logic, Puzzles, Thinking' },
     { title: 'Information Technology', description: 'Integrating modern cloud infrastructure with core enterprise systems.', src: 'img/it_integration.svg', alt: 'Information Technology' },
