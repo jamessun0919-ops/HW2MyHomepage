@@ -86,3 +86,15 @@
 - [style.css](file:///C:/Users/User/Desktop/HW2MyHomepage/style.css) (樣式表)
 - [app.js](file:///C:/Users/User/Desktop/HW2MyHomepage/app.js) (邏輯與動畫)
 - [img/](file:///C:/Users/User/Desktop/HW2MyHomepage/img/) (圖片與 SVG 向量圖目錄)
+
+---
+
+## 📝 網頁修改與部署規則
+
+為確保網站中英文內容的一致性以及線上版本能即時更新，所有後續的修改必須遵守以下規則：
+
+1. **中英文網頁同步修改**：
+   - 任何涉及網頁版面、文字內容、功能邏輯（JS）或排版樣式（CSS）的修改，皆須同步在英文版（如 `index.html`、`prog-projects.html`）與繁體中文版（如 `index-zh.html`、`prog-projects-zh.html`）進行對應更新，以維持雙語內容的完整與對等。
+2. **同步部署至 GitHub**：
+   - 本地代碼修改完成並通過驗證後，必須將所有變更即時提交（Commit）並推送（Push）部署至 GitHub 遠端倉庫：
+     [https://github.com/jamessun0919-ops/HW2MyHomepage](https://github.com/jamessun0919-ops/HW2MyHomepage)

@@ -61,3 +61,16 @@ A premium, interactive, clean and bright personal website for James Sun. Fully r
    git clone https://github.com/jamessun0919-ops/HW2MyHomepage.git
    ```
 2. Navigate to the directory and open `index.html` directly in any web browser of your choice.
+
+---
+
+## 📝 Webpage Modification & Deployment Rules | 網頁修改與部署規則
+
+To maintain bilingual consistency and ensure that the live presentation is always up-to-date, all future modifications must follow these rules:
+
+1. **Synchronous Modification of EN/ZH Pages | 同步修改中英文版網頁**:
+   - Any layout, text, script, or style updates made to the Chinese version (`*-zh.html`) must be applied correspondingly to the English version (`*.html`), and vice versa, to ensure bilingual parity.
+2. **Synchronous Deployment to GitHub | 同步部署至 GitHub**:
+   - All approved modifications must be immediately committed and pushed to the remote GitHub repository:
+     [https://github.com/jamessun0919-ops/HW2MyHomepage](https://github.com/jamessun0919-ops/HW2MyHomepage)
+     This triggers the deployment of the updated live website.
