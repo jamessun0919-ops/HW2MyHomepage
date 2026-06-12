@@ -3,7 +3,7 @@ const { createApp } = Vue;
 const isZh = document.documentElement.lang.startsWith('zh');
 
 const galleryImagesData = isZh ? [
-    { title: '人工智慧課程實作', src: 'img/AIwork.png', alt: '人工智慧課程實作' },
+    { title: '人工智慧課程實作', subtitle: '陳煥老師指導', src: 'img/AIwork.png', alt: '人工智慧課程實作' },
     { title: '程式語言課程實作', src: 'img/PythonWork.jpg', alt: '程式語言課程實作' },
     { title: '職訓課程成果專案', description: '', src: 'img/FinalProject.jpg', alt: '職訓課程成果專案' },
     { title: '邏輯、謎題、思考', description: '', src: 'img/Mystery.png', alt: '邏輯、謎題、思考' },
@@ -12,7 +12,7 @@ const galleryImagesData = isZh ? [
     { title: '運營優化', description: '重塑業務流程，降低營運成本，提升日常運作效率。', src: 'img/operational_optimization.svg', alt: '運營優化' },
     { title: '跨學科專業整合', description: '融合管理戰略與硬核軟體技術，提供全面的專家級洞察。', src: 'img/interdisciplinary.svg', alt: '跨學科專業整合' }
 ] : [
-    { title: 'AI Course Projects', src: 'img/AIwork.png', alt: 'AI Course Projects' },
+    { title: 'AI Course Projects', subtitle: 'Instructed by Prof. Huan Chen', src: 'img/AIwork.png', alt: 'AI Course Projects' },
     { title: 'Programming Language Projects', src: 'img/PythonWork.jpg', alt: 'Programming Language Projects' },
     { title: 'Vocational Training Showcase Project', description: '', src: 'img/FinalProject.jpg', alt: 'Vocational Training Showcase Project' },
     { title: 'Logic, Puzzles, Thinking', description: '', src: 'img/Mystery.png', alt: 'Logic, Puzzles, Thinking' },

@@ -95,7 +95,10 @@
                     <div v-for="image in galleryImages" :key="image.src" class="gallery-item" @click="handleGalleryClick(image)">
                         <img :src="image.src" :alt="image.alt">
                         <div class="gallery-info">
-                            <h3>{{ image.title }}</h3>
+                            <h3>
+                                {{ image.title }}
+                                <span v-if="image.subtitle" class="gallery-subtitle">{{ image.subtitle }}</span>
+                            </h3>
                             <p>{{ image.description }}</p>
                         </div>
                     </div>
