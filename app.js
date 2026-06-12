@@ -5,7 +5,7 @@ const isZh = document.documentElement.lang.startsWith('zh');
 const galleryImagesData = isZh ? [
     { title: '人工智慧課程實作', src: 'img/AIwork.png', alt: '人工智慧課程實作' },
     { title: '程式語言課程實作', src: 'img/PythonWork.jpg', alt: '程式語言課程實作' },
-    { title: '數據驅動決策', description: '建立數據分析管道，以客觀洞察力指導企業發展。', src: 'img/data_decision.svg', alt: '數據驅動決策' },
+    { title: '職訓課程專案', description: '', src: 'img/FinalProject.jpg', alt: '職訓課程專案' },
     { title: '創新與轉型', description: '推動數位化流程轉型，提升企業在變革市場中的競爭力。', src: 'img/innovation.svg', alt: '創新與轉型' },
     { title: '信息技術整合', description: '融合最先進的雲端架構與服務，優化現有 IT 系統。', src: 'img/it_integration.svg', alt: '信息技術整合' },
     { title: '整體解決方案', description: '設計端到端的系統解決方案，一次性解決多元業務痛點。', src: 'img/holistic_solution.svg', alt: '整體解決方案' },
@@ -14,7 +14,7 @@ const galleryImagesData = isZh ? [
 ] : [
     { title: 'AI Course Projects', src: 'img/AIwork.png', alt: 'AI Course Projects' },
     { title: 'Programming Language Projects', src: 'img/PythonWork.jpg', alt: 'Programming Language Projects' },
-    { title: 'Data-Driven Decision Making', description: 'Establishing data pipelines to guide enterprise steps with objective metrics.', src: 'img/data_decision.svg', alt: 'Data-Driven Decision Making' },
+    { title: 'Vocational Training Project', description: '', src: 'img/FinalProject.jpg', alt: 'Vocational Training Project' },
     { title: 'Innovation & Transformation', description: 'Driving digital transformation processes to enhance competitiveness.', src: 'img/innovation.svg', alt: 'Innovation & Transformation' },
     { title: 'Information Technology', description: 'Integrating modern cloud infrastructure with core enterprise systems.', src: 'img/it_integration.svg', alt: 'Information Technology' },
     { title: 'Holistic Solutions', description: 'Designing end-to-end solutions that address multi-dimensional business pains.', src: 'img/holistic_solution.svg', alt: 'Holistic Solutions' },
