@@ -91,6 +91,8 @@ createApp({
                 window.location.href = isZh ? 'ai-projects-zh.html' : 'ai-projects.html';
             } else if (image.title === '程式語言課程實作' || image.title === 'Programming Language Projects') {
                 window.location.href = isZh ? 'prog-projects-zh.html' : 'prog-projects.html';
+            } else if (image.title === '最偉大的作品' || image.title === 'Greatest Work') {
+                window.location.href = 'https://jamessun0919-ops.github.io/Alyssa/';
             }
         },
         changeLanguage() {
