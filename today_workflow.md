@@ -65,7 +65,7 @@
   - 數據驅動決策 (`data_decision.svg`)
   - 創新與轉型 (`innovation.svg`)
   - 信息技術整合 (`it_integration.svg`)
-  - 整體解決方案 (`holistic_solution.svg`)
+  - 最偉大的作品 (`family.png`)
   - 運營優化 (`operational_optimization.svg`)
   - 跨學科專業整合 (`interdisciplinary.svg`)
 - 部署至 [img/](file:///C:/Users/User/Desktop/HW2MyHomepage/img) 後清理暫存腳本。

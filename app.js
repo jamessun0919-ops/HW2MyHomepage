@@ -8,7 +8,7 @@ const galleryImagesData = isZh ? [
     { title: '職訓課程成果專案', description: '', src: 'img/FinalProject.jpg', alt: '職訓課程成果專案' },
     { title: '邏輯、謎題、思考', description: '', src: 'img/Mystery.png', alt: '邏輯、謎題、思考' },
     { title: '信息技術整合', description: '融合最先進的雲端架構與服務，優化現有 IT 系統。', src: 'img/it_integration.svg', alt: '信息技術整合' },
-    { title: '整體解決方案', description: '設計端到端的系統解決方案，一次性解決多元業務痛點。', src: 'img/holistic_solution.svg', alt: '整體解決方案' },
+    { title: '最偉大的作品', description: '', src: 'img/family.png', alt: '最偉大的作品' },
     { title: '運營優化', description: '重塑業務流程，降低營運成本，提升日常運作效率。', src: 'img/operational_optimization.svg', alt: '運營優化' },
     { title: '跨學科專業整合', description: '融合管理戰略與硬核軟體技術，提供全面的專家級洞察。', src: 'img/interdisciplinary.svg', alt: '跨學科專業整合' }
 ] : [
@@ -17,7 +17,7 @@ const galleryImagesData = isZh ? [
     { title: 'Vocational Training Showcase Project', description: '', src: 'img/FinalProject.jpg', alt: 'Vocational Training Showcase Project' },
     { title: 'Logic, Puzzles, Thinking', description: '', src: 'img/Mystery.png', alt: 'Logic, Puzzles, Thinking' },
     { title: 'Information Technology', description: 'Integrating modern cloud infrastructure with core enterprise systems.', src: 'img/it_integration.svg', alt: 'Information Technology' },
-    { title: 'Holistic Solutions', description: 'Designing end-to-end solutions that address multi-dimensional business pains.', src: 'img/holistic_solution.svg', alt: 'Holistic Solutions' },
+    { title: 'Greatest Work', description: '', src: 'img/family.png', alt: 'Greatest Work' },
     { title: 'Operational Optimization', description: 'Streamlining business workflows to reduce overhead and improve execution.', src: 'img/operational_optimization.svg', alt: 'Operational Optimization' },
     { title: 'Interdisciplinary Professional', description: 'Merging strategic management with deep software engineering capabilities.', src: 'img/interdisciplinary.svg', alt: 'Interdisciplinary Professional' }
 ];
