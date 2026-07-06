@@ -6,13 +6,29 @@ A premium, interactive, clean and bright personal website for James Sun. Fully r
 
 ---
 
+## 🎯 Project Goal | 專案目標
+
+Build a bright, clean, dual-language (English / Traditional Chinese) personal homepage for James Sun, featuring smooth GSAP scroll animations and a live glassmorphic digital clock, modeled after `https://quantumwings.github.io/`.
+
+以清晰明亮、雙語（中／英）呈現的方式，為 James Sun 打造個人首頁，具備 GSAP 動態滾動效果與玻璃擬物化即時時鐘，並以 `https://quantumwings.github.io/` 為設計範本。
+
+---
+
+## 🏗️ Architecture | 計畫架構
+
+- **Frontend**: Vue 3 (CDN) for reactive state, GSAP + ScrollTrigger for animations, Font Awesome icons.
+- **Pages**: `index.html` / `index-zh.html` (home), `prog-projects*.html`, `ai-projects*.html`, `python-work-platform.html` — each with a paired EN/ZH version.
+- **Assets**: `style.css` (design system), `app.js` (clock logic, animations, language switching), `img/` (hero background + category SVGs).
+
+---
+
 ## 🎨 Visual Preview & Workflow Infographic | 開發流程圖
 
 ![Workflow Infographic](workflow_infographic.png)
 
 ---
 
-## 📅 Today's Workflow | 今日開發流程
+## ✅ Completed Progress | 已完成進度
 
 ### 1. Spec Research & Requirements Analysis (範本研究與需求分析)
 - Investigated template structure (`https://quantumwings.github.io/`).
@@ -39,6 +55,13 @@ A premium, interactive, clean and bright personal website for James Sun. Fully r
 
 ### 7. Automated browser Testing (測試驗證)
 - Conducted browser subagent verification checks on the live clock, layout alignment, language switcher transitions, and responsive widths.
+
+---
+
+## 📌 Next Steps | 未完成事項
+
+- No open items currently tracked. Update this section when new work is planned or in progress.
+- 目前沒有記錄中的未完成事項，如有新的待辦項目請於此處更新。
 
 ---
 
