@@ -17,8 +17,9 @@ Build a bright, clean, dual-language (English / Traditional Chinese) personal ho
 ## 🏗️ Architecture | 計畫架構
 
 - **Frontend**: Vue 3 (CDN) for reactive state, GSAP + ScrollTrigger for animations, Font Awesome icons.
-- **Pages**: `index.html` / `index-zh.html` (home), `prog-projects*.html`, `ai-projects*.html`, `python-work-platform.html` — each with a paired EN/ZH version.
-- **Assets**: `style.css` (design system), `app.js` (clock logic, animations, language switching), `img/` (hero background + category SVGs).
+- **Pages**: `index.html` / `index-zh.html` (home), `prog-projects*.html`, `ai-projects*.html`, `python-work-platform.html`, `restaurant-helper*.html`, `turtle-soup*.html` — each with a paired EN/ZH version.
+- **Assets**: `style.css` (design system), `app.js` (portfolio gallery data, animations, language switching), `img/` (backgrounds + category assets).
+- **Dev tool**: `mobile-preview.html` — local-only harness that renders any page side-by-side (ZH/EN) inside phone-width frames for responsive QA.
 
 ---
 
@@ -56,12 +57,26 @@ Build a bright, clean, dual-language (English / Traditional Chinese) personal ho
 ### 7. Automated browser Testing (測試驗證)
 - Conducted browser subagent verification checks on the live clock, layout alignment, language switcher transitions, and responsive widths.
 
+### 8. Homepage Portfolio Restructure (首頁作品集重整, 2026-07-10)
+- Removed the non-functional Hero section: its intro text and live-clock widget never actually rendered due to a pre-existing GSAP/CSS opacity bug (masked for months by the hero background photo), so the section was removed rather than fixed, along with all now-dead clock/CTA JS and CSS.
+- Renamed "成果展示/Showcase" to "作品集/Portfolio" across the whole site (nav, section header, CTA, back-links on every sub-page).
+- Moved the `hero_bg2.jpg` watermark background from the removed Hero section onto the Portfolio/gallery section.
+- Restructured the portfolio gallery: reordered and retitled cards, replaced the fragile title-string click routing in `app.js` with a per-item `link` field, removed two placeholder cards (運營優化／跨學科專業整合) and their unused SVGs, and marked "信息技術整合" as "待補充/To Be Added" pending future content.
+
+### 9. New Project Intro Pages (新增專案介紹頁, 2026-07-10)
+- `restaurant-helper.html` / `-zh.html`: intro page for "職訓課程小組專題 - 餐廳選擇小幫手", with DEMO (Vercel) and GitHub repo buttons, full bilingual project description, and a fixed watermark background (`ResDecBgPic.jpg`).
+- `turtle-soup.html` / `-zh.html`: intro page for "興趣專題 - AI主持海龜湯解謎遊戲", same button/description pattern, background (`puzzleparty.jpg`).
+- Iterated on mobile-specific layout: title/button font sizing, stacked equal-size DEMO/Repo buttons, text contrast against the background photos, and header/title spacing.
+- Added `mobile-preview.html` as a local dev tool for checking ZH/EN mobile layout side by side.
+
 ---
 
 ## 📌 Next Steps | 未完成事項
 
-- No open items currently tracked. Update this section when new work is planned or in progress.
-- 目前沒有記錄中的未完成事項，如有新的待辦項目請於此處更新。
+- "信息技術整合/To Be Added" portfolio card has no content or link yet — pending a future project to fill it.
+- User to do a final visual/cache-cleared check of `restaurant-helper*.html` and `turtle-soup*.html` (background, contrast, spacing) on real devices.
+- 「信息技術整合／待補充」作品集卡片目前沒有連結，等未來有新專案時再補上。
+- 使用者需清除快取後，在實機上做一次 `restaurant-helper*.html`／`turtle-soup*.html` 的最終視覺確認（背景、對比度、間距）。
 
 ---
 
@@ -70,10 +85,14 @@ Build a bright, clean, dual-language (English / Traditional Chinese) personal ho
 - 📄 `index.html` - Core English HTML layout.
 - 📄 `index-zh.html` - Core Traditional Chinese HTML layout.
 - 📄 `style.css` - UI Design System stylesheet.
-- 📄 `app.js` - Vue 3 reactivity & GSAP animations logic.
+- 📄 `app.js` - Vue 3 reactivity, portfolio gallery data, & GSAP animations logic.
+- 📄 `restaurant-helper.html` / `restaurant-helper-zh.html` - Project intro page: Restaurant Decision Helper.
+- 📄 `turtle-soup.html` / `turtle-soup-zh.html` - Project intro page: AI-Hosted Turtle Soup Puzzle Game.
+- 📄 `mobile-preview.html` - Local dev tool for ZH/EN mobile layout QA (not part of the deployed site's nav).
 - 📄 `workflow_infographic.png` - Visual workflow infographic.
 - 📄 `today_workflow.md` - Chronological development log.
-- 📁 `img/` - Image directories (Hero background & 8 customized SVG focus icons).
+- 📄 `worklog.md` / `chatlog.md` / `Handover.md` - Daily worklog, dev-agent conversation log, and handover doc.
+- 📁 `img/` - Image directory (backgrounds & category assets).
 
 ---
 

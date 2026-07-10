@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手機版預覽 | Mobile Preview</title>
+<style>
+    :root {
+        --frame-width: 390px;
+        --frame-height: 844px;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        padding: 40px 24px;
+        background: #1e2530;
+        font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+    h1 {
+        color: #f1f5f9;
+        font-size: 20px;
+        margin: 0;
+    }
+    .toolbar {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+    .toolbar label {
+        color: #cbd5e1;
+        font-size: 14px;
+    }
+    .toolbar select {
+        padding: 6px 10px;
+        border-radius: 6px;
+        border: 1px solid #475569;
+        background: #0f172a;
+        color: #f1f5f9;
+        font-size: 14px;
+    }
+    .frames {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: center;
+    }
+    .frame-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .frame-label {
+        color: #f1f5f9;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    .phone-frame {
+        width: var(--frame-width);
+        height: var(--frame-height);
+        background: #000;
+        border-radius: 40px;
+        padding: 14px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+    .phone-frame iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 26px;
+        background: #fff;
+        display: block;
+    }
+</style>
+</head>
+<body>
+    <h1>手機版排版預覽 Mobile Layout Preview</h1>
+
+    <div class="toolbar">
+        <label for="page-select">預覽頁面 Page：</label>
+        <select id="page-select">
+            <option value="index" data-zh="index-zh.html" data-en="index.html">首頁 Home</option>
+            <option value="prog-projects" data-zh="prog-projects-zh.html" data-en="prog-projects.html">程式語言專案 Programming Projects</option>
+            <option value="ai-projects" data-zh="ai-projects-zh.html" data-en="ai-projects.html">AI 課程專案 AI Projects</option>
+            <option value="restaurant-helper" data-zh="restaurant-helper-zh.html" data-en="restaurant-helper.html">餐廳選擇小幫手 Restaurant Helper</option>
+            <option value="turtle-soup" data-zh="turtle-soup-zh.html" data-en="turtle-soup.html">個人興趣專題 Turtle Soup</option>
+        </select>
+    </div>
+
+    <div class="frames">
+        <div class="frame-block">
+            <div class="frame-label">中文版</div>
+            <div class="phone-frame">
+                <iframe id="frame-zh" src="index-zh.html" title="中文版手機預覽"></iframe>
+            </div>
+        </div>
+        <div class="frame-block">
+            <div class="frame-label">English</div>
+            <div class="phone-frame">
+                <iframe id="frame-en" src="index.html" title="English mobile preview"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const select = document.getElementById('page-select');
+        const frameZh = document.getElementById('frame-zh');
+        const frameEn = document.getElementById('frame-en');
+        select.addEventListener('change', () => {
+            const option = select.options[select.selectedIndex];
+            frameZh.src = option.dataset.zh;
+            frameEn.src = option.dataset.en;
+        });
+    </script>
+</body>
+</html>

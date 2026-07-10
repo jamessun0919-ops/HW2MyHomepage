@@ -24,10 +24,10 @@
                 <a href="index-zh.html" class="logo">JAMES <span>SUN</span></a>
                 <ul class="nav-links" :class="{ 'active': menuActive }">
                     <li :class="{ 'active': activePage === 'home' }">
-                        <a href="#home" @click="setActivePage('home')">首頁</a>
+                        <a href="#" @click="setActivePage('home')">首頁</a>
                     </li>
                     <li :class="{ 'active': activePage === 'portfolio' }">
-                        <a href="#portfolio" @click="setActivePage('portfolio')">成果展示</a>
+                        <a href="#portfolio" @click="setActivePage('portfolio')">作品集</a>
                     </li>
                     <li :class="{ 'active': activePage === 'about' }">
                         <a href="#about" @click="setActivePage('about')">關於我</a>
@@ -48,47 +48,11 @@
             </nav>
         </header>
 
-        <!-- 首頁 Hero 區域 -->
-        <section id="home" class="hero">
-            <div class="hero-container">
-                <div class="hero-text">
-                    <h1><span>哈囉，我是</span>James Sun</h1>
-                    <h2>企業管理與戰略規劃專家 | 致力於為高增長企業引導業務創新和信息技術整合。</h2>
-                    <div class="cta-group">
-                        <a href="#portfolio" class="cta-button">核心專業</a>
-                        <a href="#contact" class="cta-button secondary">聯絡我</a>
-                    </div>
-                </div>
-                
-                <!-- 即時時鐘組件 -->
-                <div class="hero-clock-panel">
-                    <div class="clock-widget">
-                        <div class="clock-header">
-                            <span class="clock-title">系統時間</span>
-                            <span class="clock-status">
-                                <span class="clock-status-dot"></span>即時顯示
-                            </span>
-                        </div>
-                        <div class="clock-time">
-                            <span>{{ formatTime.hours }}</span>
-                            <span class="colon">:</span>
-                            <span>{{ formatTime.minutes }}</span>
-                            <span class="colon">:</span>
-                            <span>{{ formatTime.seconds }}</span>
-                        </div>
-                        <div class="clock-date">{{ formatDate }}</div>
-                        <div class="clock-timezone">UTC/GMT+08:00 (CST)</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 成果展示 / 畫廊區域 -->
+        <!-- 作品集 / 畫廊區域 -->
         <section id="portfolio" class="gallery">
             <div class="gallery-container">
                 <div class="section-header">
-                    <h2>成果展示</h2>
-                    <p>策略支柱與能力</p>
+                    <h2>作品集</h2>
                 </div>
                 
                 <div class="gallery-grid">

@@ -24,10 +24,10 @@
                 <a href="index.html" class="logo">JAMES <span>SUN</span></a>
                 <ul class="nav-links" :class="{ 'active': menuActive }">
                     <li :class="{ 'active': activePage === 'home' }">
-                        <a href="#home" @click="setActivePage('home')">Home</a>
+                        <a href="#" @click="setActivePage('home')">Home</a>
                     </li>
                     <li :class="{ 'active': activePage === 'portfolio' }">
-                        <a href="#portfolio" @click="setActivePage('portfolio')">Showcase</a>
+                        <a href="#portfolio" @click="setActivePage('portfolio')">Portfolio</a>
                     </li>
                     <li :class="{ 'active': activePage === 'about' }">
                         <a href="#about" @click="setActivePage('about')">About</a>
@@ -48,47 +48,11 @@
             </nav>
         </header>
 
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-container">
-                <div class="hero-text">
-                    <h1><span>Hello, I am</span>James Sun</h1>
-                    <h2>Enterprise Management &amp; Strategic Planning Expert | Leading innovation and technology integration for high-growth organizations.</h2>
-                    <div class="cta-group">
-                        <a href="#portfolio" class="cta-button">View Showcase</a>
-                        <a href="#contact" class="cta-button secondary">Contact Me</a>
-                    </div>
-                </div>
-                
-                <!-- Real-Time Clock Widget -->
-                <div class="hero-clock-panel">
-                    <div class="clock-widget">
-                        <div class="clock-header">
-                            <span class="clock-title">System Time</span>
-                            <span class="clock-status">
-                                <span class="clock-status-dot"></span>Live
-                            </span>
-                        </div>
-                        <div class="clock-time">
-                            <span>{{ formatTime.hours }}</span>
-                            <span class="colon">:</span>
-                            <span>{{ formatTime.minutes }}</span>
-                            <span class="colon">:</span>
-                            <span>{{ formatTime.seconds }}</span>
-                        </div>
-                        <div class="clock-date">{{ formatDate }}</div>
-                        <div class="clock-timezone">UTC/GMT+08:00 (CST)</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Gallery / Portfolio Section -->
         <section id="portfolio" class="gallery">
             <div class="gallery-container">
                 <div class="section-header">
-                    <h2>Showcase</h2>
-                    <p>Strategic Pillars &amp; Competencies</p>
+                    <h2>Portfolio</h2>
                 </div>
                 
                 <div class="gallery-grid">

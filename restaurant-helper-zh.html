@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>職訓課程小組專題 - 餐廳選擇小幫手 | James Sun</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        body {
+            background-image: radial-gradient(circle at 10% 20%, rgba(240, 249, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 90%), url('img/ResDecBgPic.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: auto 100vh;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-size: cover;
+            }
+        }
+
+        .projects-page {
+            padding: 100px 24px 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 80vh;
+        }
+
+        .projects-page .section-header {
+            margin-bottom: 30px;
+        }
+
+        .projects-page .section-header p {
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            transition: color 0.3s ease;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 16px;
+            width: fit-content;
+            margin: 0 auto 50px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-height: 92px;
+            padding: 0 48px;
+            border-radius: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .action-btn.repo-btn {
+            font-size: 28px;
+            background-color: #f1f5f9;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+        }
+
+        .action-btn.repo-btn:hover {
+            background-color: #e2e8f0;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
+
+        .action-btn.demo-btn {
+            font-size: 28px;
+            background-color: var(--accent-color);
+            color: white;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 2px 6px rgba(2, 132, 199, 0.2);
+        }
+
+        .action-btn.demo-btn:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        }
+
+        .project-description p {
+            font-size: 16px;
+            color: var(--primary-color);
+            font-weight: 500;
+            line-height: 1.9;
+            margin-bottom: 24px;
+            text-align: justify;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
+        }
+
+        @media (max-width: 480px) {
+            .action-btn {
+                min-height: 76px;
+                padding: 0 28px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header :class="{ 'scrolled': scrolled }">
+            <nav>
+                <a href="index-zh.html" class="logo">JAMES <span>SUN</span></a>
+                <ul class="nav-links" :class="{ 'active': menuActive }">
+                    <li><a href="index-zh.html">首頁</a></li>
+                    <li><a href="index-zh.html#about">關於我</a></li>
+                    <li><a href="index-zh.html#portfolio">作品集</a></li>
+                    <li><a href="index-zh.html#contact">聯絡我</a></li>
+                    <li class="language-selector">
+                        <select v-model="selectedLanguage" @change="changeLanguage">
+                            <option value="en">EN</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </li>
+                </ul>
+                <div class="menu-toggle" @click="toggleMenu">
+                    <i :class="menuActive ? 'fas fa-times' : 'fas fa-bars'"></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="projects-page">
+            <a href="index-zh.html#portfolio" class="back-link">
+                <i class="fas fa-arrow-left"></i> 返回作品集
+            </a>
+
+            <div class="section-header">
+                <h2>職訓課程小組專題</h2>
+                <p>餐廳選擇小幫手</p>
+            </div>
+
+            <div class="action-buttons">
+                <a href="https://restaurent-decision.vercel.app/" target="_blank" class="action-btn demo-btn">
+                    <i class="fas fa-external-link-alt"></i> 點擊開始
+                </a>
+                <a href="https://github.com/jamessun0919-ops/RestaurentDecision" target="_blank" class="action-btn repo-btn">
+                    <i class="fab fa-github"></i> 程式碼倉庫
+                </a>
+            </div>
+
+            <div class="project-description">
+                <p>　　提供充分貼近日常生活需求的功能，減少每日外出用餐的選擇困難。相較於市面上的同類型app產品，本專案加入與LLM的串接，能夠處理更多使用者輸入的條件特徵，例如使用者的健康資料(年齡、性別)、健康管理需求(增肌、減脂、控醣)、飲食偏好(素食類型／辣味)等固定條件，合併當日心情與用餐動機的變動條件，再輔以預算與距離等限制條件，生成最佳的搜尋prompt，以提供最符合使用者條件的用餐選擇。</p>
+                <p>　　本專案在推薦餐廳的機制方面，通過AI的協助設計了兼顧精準推薦與放寬搜尋的功能。若使用者身處於餐飲選擇密集的都會區（大學、辦公區、醫院、商場、美食街）區域，首輪能提供較多的選擇時，提供精準符合使用者條件的推薦。在相對偏遠(景點、鄉村、住宅區)的區域，設計了放寬tier與合理提升搜尋距離的次輪搜尋機制，提供全方面穩定的餐廳資訊。</p>
+                <p>　　在使用者的體驗感方面，本專案採輕量版的網頁設計，無繁瑣的註冊與登錄，無擾人的商業廣告。個人化設定與歷史紀錄僅存在瀏覽器內存中(可一鍵清除)，可簡單回饋前次推薦的滿意度，並選擇是否避開前次推薦的餐廳增加新鮮感。</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; {{ currentYear }} James Sun. 版權所有。</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/jamessun0919-ops" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    scrolled: false,
+                    menuActive: false,
+                    selectedLanguage: 'zh',
+                    currentYear: new Date().getFullYear()
+                }
+            },
+            methods: {
+                handleScroll() {
+                    this.scrolled = window.scrollY > 50;
+                },
+                toggleMenu() {
+                    this.menuActive = !this.menuActive;
+                },
+                changeLanguage() {
+                    if (this.selectedLanguage === 'en') {
+                        window.location.href = 'restaurant-helper.html';
+                    }
+                }
+            },
+            mounted() {
+                window.addEventListener('scroll', this.handleScroll);
+            },
+            unmounted() {
+                window.removeEventListener('scroll', this.handleScroll);
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

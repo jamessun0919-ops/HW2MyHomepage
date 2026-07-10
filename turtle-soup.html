@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interest Project - AI-Hosted Turtle Soup Puzzle Game | James Sun</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        body {
+            background-image: radial-gradient(circle at 10% 20%, rgba(240, 249, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 90%), url('img/puzzleparty.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: auto 100vh;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-size: cover;
+            }
+        }
+
+        .projects-page {
+            padding: 100px 24px 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 80vh;
+        }
+
+        .projects-page .section-header {
+            margin-bottom: 30px;
+        }
+
+        .projects-page .section-header p {
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            transition: color 0.3s ease;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 16px;
+            width: fit-content;
+            margin: 0 auto 50px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-height: 92px;
+            padding: 0 48px;
+            border-radius: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .action-btn.repo-btn {
+            font-size: 28px;
+            background-color: #f1f5f9;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+        }
+
+        .action-btn.repo-btn:hover {
+            background-color: #e2e8f0;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
+
+        .action-btn.demo-btn {
+            font-size: 28px;
+            background-color: var(--accent-color);
+            color: white;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 2px 6px rgba(2, 132, 199, 0.2);
+        }
+
+        .action-btn.demo-btn:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        }
+
+        .project-description p {
+            font-size: 16px;
+            color: var(--primary-color);
+            font-weight: 500;
+            line-height: 1.9;
+            margin-bottom: 24px;
+            text-align: left;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
+        }
+
+        @media (max-width: 480px) {
+            .action-btn {
+                min-height: 76px;
+                padding: 0 28px;
+            }
+
+            .action-btn.demo-btn {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header :class="{ 'scrolled': scrolled }">
+            <nav>
+                <a href="index.html" class="logo">JAMES <span>SUN</span></a>
+                <ul class="nav-links" :class="{ 'active': menuActive }">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li class="language-selector">
+                        <select v-model="selectedLanguage" @change="changeLanguage">
+                            <option value="en">EN</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </li>
+                </ul>
+                <div class="menu-toggle" @click="toggleMenu">
+                    <i :class="menuActive ? 'fas fa-times' : 'fas fa-bars'"></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="projects-page">
+            <a href="index.html#portfolio" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+
+            <div class="section-header">
+                <h2>Interest Project</h2>
+                <p>AI-Hosted Turtle Soup Puzzle Game</p>
+            </div>
+
+            <div class="action-buttons">
+                <a href="https://turtlesoup-o7au.onrender.com/" target="_blank" class="action-btn demo-btn">
+                    <i class="fas fa-external-link-alt"></i> Click to Start
+                </a>
+                <a href="https://github.com/jamessun0919-ops/turtlesoup" target="_blank" class="action-btn repo-btn">
+                    <i class="fab fa-github"></i> Code Repository
+                </a>
+            </div>
+
+            <div class="project-description">
+                <p>Turtle Soup — officially known as a Situation Puzzle or Lateral Thinking Puzzle — is a game where the host describes an unusual event (the "soup surface"), and players ask yes/no questions to piece together the truth behind it (the "soup base").</p>
+                <p>Turtle Soup is inherently an interactive game, highly similar to a user's interaction with a conversational AI. But when the developer researched this topic, a problem emerged:</p>
+                <p>Playing Turtle Soup with mainstream LLMs falls far short of the experience with a human host. The puzzle scenarios LLMs generate come purely from imagination, so they are riddled with AI hallucinations — the AI produces content that sounds plausible and grammatically correct but is actually ungrounded or entirely fabricated.</p>
+                <p>This causes a mismatch between what players infer and the answer the AI actually generated — no matter how the AI phrases its hints, players can never land on the correct answer. Even after giving up and seeing the official answer, players can't relate to it, losing the game's core "aha" moment of realizing the answer was reasonable all along, just something they hadn't considered.</p>
+                <p>To fix the hallucination problem, the developer adopted <strong>RAG (Retrieval-Augmented Generation)</strong>: a question bank is built first, and an API lets the LLM act as host, answering player questions strictly within that grounded scope rather than generating freely.</p>
+                <p>During development and testing, the response rules for player questions, the hinting rules for the hint mode, and the logic for detecting when a player's question breaks the game's rules (i.e., an open-ended question instead of a yes/no question) were all refined. This lets the AI host provide proper guidance to reduce player frustration — without giving away the answer in the hints, a common LLM failure mode — ensuring a good player experience.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; {{ currentYear }} James Sun. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/jamessun0919-ops" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    scrolled: false,
+                    menuActive: false,
+                    selectedLanguage: 'en',
+                    currentYear: new Date().getFullYear()
+                }
+            },
+            methods: {
+                handleScroll() {
+                    this.scrolled = window.scrollY > 50;
+                },
+                toggleMenu() {
+                    this.menuActive = !this.menuActive;
+                },
+                changeLanguage() {
+                    if (this.selectedLanguage === 'zh') {
+                        window.location.href = 'turtle-soup-zh.html';
+                    }
+                }
+            },
+            mounted() {
+                window.addEventListener('scroll', this.handleScroll);
+            },
+            unmounted() {
+                window.removeEventListener('scroll', this.handleScroll);
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

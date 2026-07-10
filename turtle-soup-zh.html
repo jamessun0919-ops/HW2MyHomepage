@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>興趣專題 - AI主持海龜湯解謎遊戲 | James Sun</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        body {
+            background-image: radial-gradient(circle at 10% 20%, rgba(240, 249, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 90%), url('img/puzzleparty.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: auto 100vh;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-size: cover;
+            }
+        }
+
+        .projects-page {
+            padding: 100px 24px 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 80vh;
+        }
+
+        .projects-page .section-header {
+            margin-bottom: 30px;
+        }
+
+        .projects-page .section-header p {
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            transition: color 0.3s ease;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 16px;
+            width: fit-content;
+            margin: 0 auto 50px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-height: 92px;
+            padding: 0 48px;
+            border-radius: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .action-btn.repo-btn {
+            font-size: 28px;
+            background-color: #f1f5f9;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+        }
+
+        .action-btn.repo-btn:hover {
+            background-color: #e2e8f0;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
+
+        .action-btn.demo-btn {
+            font-size: 28px;
+            background-color: var(--accent-color);
+            color: white;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 2px 6px rgba(2, 132, 199, 0.2);
+        }
+
+        .action-btn.demo-btn:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        }
+
+        .project-description p {
+            font-size: 16px;
+            color: var(--primary-color);
+            font-weight: 500;
+            line-height: 1.9;
+            margin-bottom: 24px;
+            text-align: justify;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
+        }
+
+        @media (max-width: 480px) {
+            .action-btn {
+                min-height: 76px;
+                padding: 0 28px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header :class="{ 'scrolled': scrolled }">
+            <nav>
+                <a href="index-zh.html" class="logo">JAMES <span>SUN</span></a>
+                <ul class="nav-links" :class="{ 'active': menuActive }">
+                    <li><a href="index-zh.html">首頁</a></li>
+                    <li><a href="index-zh.html#about">關於我</a></li>
+                    <li><a href="index-zh.html#portfolio">作品集</a></li>
+                    <li><a href="index-zh.html#contact">聯絡我</a></li>
+                    <li class="language-selector">
+                        <select v-model="selectedLanguage" @change="changeLanguage">
+                            <option value="en">EN</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </li>
+                </ul>
+                <div class="menu-toggle" @click="toggleMenu">
+                    <i :class="menuActive ? 'fas fa-times' : 'fas fa-bars'"></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="projects-page">
+            <a href="index-zh.html#portfolio" class="back-link">
+                <i class="fas fa-arrow-left"></i> 返回作品集
+            </a>
+
+            <div class="section-header">
+                <h2>興趣專題</h2>
+                <p>AI主持海龜湯解謎遊戲</p>
+            </div>
+
+            <div class="action-buttons">
+                <a href="https://turtlesoup-o7au.onrender.com/" target="_blank" class="action-btn demo-btn">
+                    <i class="fas fa-external-link-alt"></i> 點擊開始
+                </a>
+                <a href="https://github.com/jamessun0919-ops/turtlesoup" target="_blank" class="action-btn repo-btn">
+                    <i class="fab fa-github"></i> 程式碼倉庫
+                </a>
+            </div>
+
+            <div class="project-description">
+                <p>海龜湯，遊戲正式名稱為情境猜謎（Situation puzzle）或水平思考遊戲（Lateral thinking puzzle）。出題者會講述一段不尋常的事件（湯面），玩家透過是非題提問，拼湊出背後的故事真相（湯底）。</p>
+                <p>　　海龜湯遊戲本質是一個互動式的遊戲，高度類似使用者與聊天式AI的互動。但開發者對此主題進行調研時發現：</p>
+                <p>　　與各主流LLM進行海龜湯遊戲時，實際遊玩的體驗與真人主持人相比有很大的落差。LLM生成的題目情境來自於想像，使得這些謎題情境包含大量的AI幻覺(Hallucination)，AI產生了看似合理、語法正確，但實際上沒有根據或完全虛構的內容。</p>
+                <p>　　導致玩家的認知與AI生成的正確答案不符，無論AI如何進行提示，玩家都無法命中正確答案。玩家在放棄後看到的正確答案也無法產生認同，完全喪失了遊戲裡「原來是這樣，題目很合理只是我沒想到」，缺少恍然大悟的遊戲體驗。</p>
+                <p>　　為了改善幻覺問題，開發者採用<strong>RAG（Retrieval-Augmented Generation）</strong>的方式，改為建立題庫後，使用API來讓LLM擔任主持人與玩家問答。使AI主持人在回答問題時是在明確的範圍內思考，而非天馬行空的生成。</p>
+                <p>　　並且在開發的測試過程中，完善AI主持人對玩家提問的回答規則、提示模式的提示規則，以及當使用者提問的問題不符合遊戲規定（超出是非題的開放式問句）的判斷機制。使AI主持人能提供適當的引導，減少玩家的挫折感。卻又不至於在提示中幾乎講出答案（LLM常會出現的情況），確保玩家擁有良好的使用體驗。</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; {{ currentYear }} James Sun. 版權所有。</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/jamessun0919-ops" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    scrolled: false,
+                    menuActive: false,
+                    selectedLanguage: 'zh',
+                    currentYear: new Date().getFullYear()
+                }
+            },
+            methods: {
+                handleScroll() {
+                    this.scrolled = window.scrollY > 50;
+                },
+                toggleMenu() {
+                    this.menuActive = !this.menuActive;
+                },
+                changeLanguage() {
+                    if (this.selectedLanguage === 'en') {
+                        window.location.href = 'turtle-soup.html';
+                    }
+                }
+            },
+            mounted() {
+                window.addEventListener('scroll', this.handleScroll);
+            },
+            unmounted() {
+                window.removeEventListener('scroll', this.handleScroll);
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
