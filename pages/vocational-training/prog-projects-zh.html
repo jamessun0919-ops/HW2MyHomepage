@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>程式語言課程實作 | James Sun</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -102,12 +102,11 @@
     <div id="app">
         <header :class="{ 'scrolled': scrolled }">
             <nav>
-                <a href="index-zh.html" class="logo">JAMES <span>SUN</span></a>
+                <a href="../../index-zh.html" class="logo">JAMES <span>SUN</span></a>
                 <ul class="nav-links" :class="{ 'active': menuActive }">
-                    <li><a href="index-zh.html">首頁</a></li>
-                    <li><a href="index-zh.html#about">關於我</a></li>
-                    <li><a href="index-zh.html#portfolio">作品集</a></li>
-                    <li><a href="index-zh.html#contact">聯絡我</a></li>
+                    <li><a href="../../index-zh.html">首頁</a></li>
+                    <li><a href="../../index-zh.html#portfolio">作品集</a></li>
+                    <li><a href="../../index-zh.html#contact">聯絡我</a></li>
                     <li class="language-selector">
                         <select v-model="selectedLanguage" @change="changeLanguage">
                             <option value="en">EN</option>
@@ -122,8 +121,8 @@
         </header>
 
         <main class="projects-page">
-            <a href="index-zh.html#portfolio" class="back-link">
-                <i class="fas fa-arrow-left"></i> 返回作品集
+            <a href="vocational-training-zh.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> 返回人工智慧與資料分析
             </a>
 
             <div class="section-header">

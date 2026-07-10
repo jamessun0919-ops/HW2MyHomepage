@@ -29,9 +29,6 @@
                     <li :class="{ 'active': activePage === 'portfolio' }">
                         <a href="#portfolio" @click="setActivePage('portfolio')">作品集</a>
                     </li>
-                    <li :class="{ 'active': activePage === 'about' }">
-                        <a href="#about" @click="setActivePage('about')">關於我</a>
-                    </li>
                     <li :class="{ 'active': activePage === 'contact' }">
                         <a href="#contact" @click="setActivePage('contact')">聯絡我</a>
                     </li>
@@ -66,25 +63,6 @@
                             <p>{{ image.description }}</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 關於我區域 -->
-        <section id="about" class="about">
-            <div class="section-header">
-                <h2>關於我</h2>
-                <p>連結技術與領導力</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <p>熱愛 AI 帶來的生活優化，喜歡研究邏輯思維相關的謎題。</p>
-                    <p>多年豐富的餐飲管理經驗，熱衷於解決問題帶來的成就感。</p>
-                </div>
-                
-                <div class="about-image">
-                    <img src="img/MCD01.JPG" alt="James Sun" style="width: 100%; border-radius: 16px; box-shadow: var(--card-shadow);">
                 </div>
             </div>
         </section>

@@ -88,3 +88,9 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 　生成交接文檔Handover
 　生成Github的Readme欄位內容，於推送時更新。順序包含：DEMO按鍵(如果有完成的網頁)、專案目標、計畫架構(如果有)、已完成進度、未完成事項。
   生成交接文檔時,同時關閉本地測試用server(如果有)
+
+檔案結構規則：
+　新增的 html 頁面依類別放進 `pages/<category>/` 資料夾（例如 `pages/vocational-training/`、`pages/handy-features/`、`pages/puzzle-game/`、`pages/restaurant-profit/`），該類別的 hub 頁與其底下所有子頁（含中英文版）都放同一個資料夾，方便一起維護。
+　根目錄只保留：`index.html`／`index-zh.html`（首頁）、`style.css`、`app.js`、`mobile-preview.html`（本機測試工具）與非分類的獨立頁面。
+　`pages/<category>/*.html` 內的相對路徑寫法：連回根目錄資源用 `../../`（例如 `../../style.css`、`../../img/xxx.jpg`、`../../index.html#portfolio`）；連到同資料夾內的其他頁面（同類別的 hub／子頁互連）維持檔名直接引用，不用加路徑前綴。
+　首頁卡片資料（`app.js` 的 `galleryImagesData`）裡新增/修改 hub 頁連結時，`link` 欄位要寫完整相對路徑，例如 `'pages/vocational-training/vocational-training.html'`，不能只寫檔名。

@@ -29,9 +29,6 @@
                     <li :class="{ 'active': activePage === 'portfolio' }">
                         <a href="#portfolio" @click="setActivePage('portfolio')">Portfolio</a>
                     </li>
-                    <li :class="{ 'active': activePage === 'about' }">
-                        <a href="#about" @click="setActivePage('about')">About</a>
-                    </li>
                     <li :class="{ 'active': activePage === 'contact' }">
                         <a href="#contact" @click="setActivePage('contact')">Contact</a>
                     </li>
@@ -66,25 +63,6 @@
                             <p>{{ image.description }}</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about">
-            <div class="section-header">
-                <h2>About Me</h2>
-                <p>Bridging Technology &amp; Leadership</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Passionate about life optimization enabled by AI, and love researching puzzles related to logical thinking.</p>
-                    <p>With years of extensive experience in food and beverage management, I thrive on the sense of accomplishment that comes from solving problems.</p>
-                </div>
-                
-                <div class="about-image">
-                    <img src="img/MCD01.JPG" alt="James Sun" style="width: 100%; border-radius: 16px; box-shadow: var(--card-shadow);">
                 </div>
             </div>
         </section>

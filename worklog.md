@@ -34,6 +34,16 @@
 ## 2026-07-06
 - 新增 CLAUDE.md 專案規則，並依規定章節順序重整 README.md。
 
+## 待討論事項（下次工作開始前先討論）
+> 2026-07-10 收工前 agent 提出的 7 點建議，尚未決策，下次工作前需先逐項討論再動工：
+1. 首頁移除 Hero 後，最上方沒有任何個人自我介紹（名字/頭銜/一句話定位），About Me 要往下捲才看得到——確認這是否為預期的定位，如果不是要設計新的簡短開場。
+2. 「信息技術整合／待補充」卡片目前無連結、對外顯示「TBD」字樣，觀感像半成品——討論是否先隱藏此卡，等有內容再上架。
+3. `restaurant-helper(.html/-zh.html)` 與 `turtle-soup(.html/-zh.html)` 四個檔案的 `.action-btn`／`.project-description p`／`.back-link` 等樣式是複製四份而非共用，之後每次微調都要改四處——討論是否搬進 `style.css` 變成共用 class。
+4. 目前排版驗證仰賴使用者截圖回報、agent 端沒有瀏覽器截圖工具，反覆來回較慢——確認是否要導入可截圖驗證的工具/流程。
+5. 兩個介紹頁的 `background-attachment: fixed` 尚未在舊版 iOS Safari 實機測試，是已知平台限制風險點——排入驗證清單。
+6. 兩個專案介紹頁的英文說明文字為 agent 直接翻譯，語感屬堪用而非潤飾文案——正式對外前使用者需要親自校閱潤飾。
+7. 今天發現三個非本次對話操作刪除的圖片檔案（後確認為使用者自行刪除）——之後若在 Claude Code 外部動過檔案，建議開工前先過一次 `git status` 再繼續，避免類似情況被忽略。
+
 ## 2026-07-10
 - 安裝 `grill-me` / `grilling` skill（使用者範圍，`~/.claude/skills/`），確認其用途後標記本專案暫不使用。
 - 討論下一階段任務：調整首頁排版、將兩個已完成的工作方案連結進 Showcase，形成作品集展示。已確認的方案之一為 `restaurent Decision Paralysis`（已部署 https://restaurent-decision.vercel.app ）；第二個方案與具體排版調整內容尚待使用者補充。
@@ -50,3 +60,24 @@
 - 兩個介紹頁加入固定浮水印背景圖（`restaurant-helper*`用 `ResDecBgPic.jpg`、`turtle-soup*`用 `puzzleparty.jpg`），桌面 `auto 100vh` 置中等比例、手機 `cover`，並加深返回連結／副標／內文文字顏色與陰影以提高背景圖上的可讀性對比度。
 - 確認 `img/Turtle.jpg`、`img/brain.jpg`、`img/hero_bg.jpg` 三個既有死檔案（早已無程式碼引用）為使用者自行刪除，一併納入本次推送。
 - 收工前依 CLAUDE.md 規則更新 README.md（新增今日完成項目、未完成事項、檔案架構）、`worklog.md`、`chatlog.md`、`Handover.md`，關閉本機測試伺服器，推送至 GitHub。
+- 記錄作品集卡片圖片生成風格對照（供之後新增卡片圖片時參考一致風格）：
+  - AI課程：科技風格
+  - 餐廳利潤：科技風格
+  - 小幫手：彩色素描風格
+  - 小遊戲：卡通風格
+  - 偉大作品：卡通風格
+
+### 下半場：移除 About、共用樣式、截圖工具、作品集多層目錄重構
+- 移除首頁「關於我/About Me」整個區塊（含導覽項、標題、文字、大頭照 `img/MCD01.JPG`），並清除 `app.js`／`style.css` 對應的 GSAP 動畫與 CSS；同步移除 10 個子頁面頁尾導覽列裡失效的 About 連結。
+- 把 `restaurant-helper`/`turtle-soup` 四個檔案裡複製四份的內嵌 `<style>` 搬進 `style.css` 共用 class（`.projects-page`、`.project-detail-bg`），中英文差異改用 `html[lang="zh-TW"]` 選擇器處理，不再需要逐檔案改樣式。
+- 導入 Playwright 截圖工具（`package.json`、`scripts/screenshot.js`、`.gitignore`），可對本機伺服器上的任一頁面產出桌機/手機截圖供視覺驗證；發現並記錄 Playwright `fullPage` 截圖對 `background-attachment: fixed` 的已知限制。
+- 討論待辦事項 7（img 資料夾外部異動）：確認開發者手動用 `profit.jpg`/`Crew.jpg`/`material.jpg`/`customer.jpg` 等圖檔取代 `it_integration.svg`；決定維持既有「開新一批編輯前跑 git status、發現異動就提醒確認」的作法，不新增額外流程，未被程式碼使用的新檔案先忽略即可。
+- 作品集卡片與目錄頁大改版（多輪迭代）：
+  - 新增「AI課程/AI & Data Analysis」卡片，連到新建 `vocational-training` 目錄頁，內含「職訓課程小組專題」「機器學習演算法學習紀錄」「程式語言課程實作」三張卡片。
+  - 新增「餐廳利潤管理/Restaurant Profit Management」卡片取代原「待補充」，連到新建 `restaurant-profit` 目錄頁，內含「班表轉換」「物料控管」「顧客資料整合」三張待補充子頁。
+  - 新增「功能小幫手/Feature Helper」卡片（歷經「待補充」→「好用小功能」→「功能小幫手」三次更名），連到新建 `handy-features` 目錄頁，內含「餐廳小幫手」（重新導向既有 `restaurant-helper` 內容）、「天氣小幫手」（新頁，已補上 Vercel Demo／GitHub Repo／專案說明：練習網路爬蟲的課堂作業）、「文章小幫手」（新頁，僅佔位）。
+  - 「個人興趣專題」更名「益智小遊戲」，連到新建 `puzzle-game` 目錄頁，內含「AI海龜湯」卡片（重新導向既有 `turtle-soup` 內容，介紹頁標題同步改為「AI海龜湯」並移除副標）。
+  - 「最偉大的作品」更名「最偉大作品」，補上小字說明「女兒陛下Alyssa Sun」。
+  - 原本「職訓課程小組專題」的實際內容（DEMO/Repo/說明）確定改由「餐廳小幫手」承接後，在 `vocational-training` 目錄頁新建 `group-project(-zh).html` 空白佔位介紹頁銜接。
+- 檔案結構重構：因新增大量 html 頁面，依開發者要求把今天新建與相關聯的 30 個頁面依類別搬進 `pages/<category>/`（`vocational-training`／`handy-features`／`puzzle-game`／`restaurant-profit`），修正每個檔案裡連回根目錄資源（`style.css`／`img/`／`index.html`）的相對路徑（改用 `../../`），同資料夾內頁面互連維持原檔名；同步更新 `app.js` 的 hub 連結欄位與 `mobile-preview.html` 預覽下拉選單路徑；把資料夾配置規則寫入 `CLAUDE.md`。用截圖工具抽測整條連結鏈（首頁→目錄頁→子頁，含最複雜的 `ex0602.html` 互動 Demo 頁）確認搬遷後正常運作。
+- 收工前產出交接文件（`Handover.md`）、更新 `README.md`，關閉本機測試伺服器（port 8090），推送至 GitHub。

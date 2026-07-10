@@ -3,19 +3,17 @@ const { createApp } = Vue;
 const isZh = document.documentElement.lang.startsWith('zh');
 
 const galleryImagesData = isZh ? [
-    { title: '職訓課程小組專題', subtitle: '餐廳選擇小幫手', src: 'img/FinalProject.jpg', alt: '職訓課程小組專題', link: 'restaurant-helper-zh.html' },
-    { title: '機器學習演算法\n學習紀錄', subtitle: '陳煥老師指導', src: 'img/AIwork.png', alt: '機器學習演算法學習紀錄', link: 'ai-projects-zh.html' },
-    { title: '程式語言課程實作', subtitle: '蔡正一老師指導', src: 'img/PythonWork.jpg', alt: '程式語言課程實作', link: 'prog-projects-zh.html' },
-    { title: '個人興趣專題', subtitle: 'AI主持海龜湯解謎遊戲', src: 'img/Mystery.png', alt: '個人興趣專題', link: 'turtle-soup-zh.html' },
-    { title: '待補充', description: '', src: 'img/it_integration.svg', alt: '待補充' },
-    { title: '最偉大的作品', description: '', src: 'img/family.png', alt: '最偉大的作品', link: 'https://jamessun0919-ops.github.io/Alyssa/' }
+    { title: '人工智慧與資料分析', subtitle: '2026職訓課程', src: 'img/AIclass.jpg', alt: '人工智慧與資料分析', link: 'pages/vocational-training/vocational-training-zh.html' },
+    { title: '餐廳利潤管理', subtitle: '智慧排班、物料管理、顧客資料', src: 'img/profit.jpg', alt: '餐廳利潤管理', link: 'pages/restaurant-profit/restaurant-profit-zh.html' },
+    { title: '功能小幫手', subtitle: '餐廳小幫手\n天氣小幫手\n文章小幫手', src: 'img/helper.jpg', alt: '功能小幫手', link: 'pages/handy-features/handy-features-zh.html' },
+    { title: '益智小遊戲', subtitle: 'AI主持海龜湯解謎遊戲', src: 'img/Mystery.png', alt: '益智小遊戲', link: 'pages/puzzle-game/puzzle-game-zh.html' },
+    { title: '最偉大作品', subtitle: '女兒陛下Alyssa Sun', src: 'img/family.png', alt: '最偉大作品', link: 'https://jamessun0919-ops.github.io/Alyssa/' }
 ] : [
-    { title: 'Vocational Training Group Project', subtitle: 'Restaurant Decision Helper', src: 'img/FinalProject.jpg', alt: 'Vocational Training Group Project', link: 'restaurant-helper.html' },
-    { title: 'Machine Learning Algorithms\nLearning Log', subtitle: 'Instructed by Prof. Huan Chen', src: 'img/AIwork.png', alt: 'Machine Learning Algorithms Learning Log', link: 'ai-projects.html' },
-    { title: 'Programming Language Projects', subtitle: 'Instructed by Prof. Cheng-Yi Tsai', src: 'img/PythonWork.jpg', alt: 'Programming Language Projects', link: 'prog-projects.html' },
-    { title: 'Personal Interest Project', subtitle: 'AI-Hosted Turtle Soup Puzzle Game', src: 'img/Mystery.png', alt: 'Personal Interest Project', link: 'turtle-soup.html' },
-    { title: 'To Be Added', description: '', src: 'img/it_integration.svg', alt: 'To Be Added' },
-    { title: 'Greatest Work', description: '', src: 'img/family.png', alt: 'Greatest Work', link: 'https://jamessun0919-ops.github.io/Alyssa/' }
+    { title: 'AI & Data Analysis', subtitle: '2026 Vocational Training Course', src: 'img/AIclass.jpg', alt: 'AI & Data Analysis', link: 'pages/vocational-training/vocational-training.html' },
+    { title: 'Restaurant Profit Management', subtitle: 'Smart Scheduling, Material Management, Customer Data', src: 'img/profit.jpg', alt: 'Restaurant Profit Management', link: 'pages/restaurant-profit/restaurant-profit.html' },
+    { title: 'Feature Helper', subtitle: 'Restaurant Helper\nWeather Helper\nArticle Helper', src: 'img/helper.jpg', alt: 'Feature Helper', link: 'pages/handy-features/handy-features.html' },
+    { title: 'Puzzle Game', subtitle: 'AI-Hosted Turtle Soup Puzzle Game', src: 'img/Mystery.png', alt: 'Puzzle Game', link: 'pages/puzzle-game/puzzle-game.html' },
+    { title: 'Greatest Work', subtitle: 'Her Highness Alyssa Sun', src: 'img/family.png', alt: 'Greatest Work', link: 'https://jamessun0919-ops.github.io/Alyssa/' }
 ];
 
 createApp({
@@ -34,7 +32,7 @@ createApp({
             this.scrolled = window.scrollY > 50;
             
             // Highlight current section in navbar based on scroll position
-            const sections = ['portfolio', 'about', 'contact'];
+            const sections = ['portfolio', 'contact'];
             const scrollPos = window.scrollY + 150; // offset for nav header height
             
             for (const sectionId of sections) {
@@ -82,28 +80,6 @@ createApp({
             });
 
             // Scroll triggers for sections
-            // About Section Elements
-            gsap.from('.about .section-header', {
-                opacity: 0,
-                y: 30,
-                duration: 0.8,
-                scrollTrigger: {
-                    trigger: '.about',
-                    start: 'top 80%'
-                }
-            });
-
-            gsap.from('.about-text p', {
-                opacity: 0,
-                x: -30,
-                stagger: 0.15,
-                duration: 0.8,
-                scrollTrigger: {
-                    trigger: '.about-text',
-                    start: 'top 80%'
-                }
-            });
-
             // Gallery / Portfolio Items
             gsap.utils.toArray('.gallery-item').forEach((item, index) => {
                 gsap.to(item, {

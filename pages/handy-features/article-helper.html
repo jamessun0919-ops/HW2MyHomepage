@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Helper - Feature Helper | James Sun</title>
+
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header :class="{ 'scrolled': scrolled }">
+            <nav>
+                <a href="../../index.html" class="logo">JAMES <span>SUN</span></a>
+                <ul class="nav-links" :class="{ 'active': menuActive }">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../index.html#portfolio">Portfolio</a></li>
+                    <li><a href="../../index.html#contact">Contact</a></li>
+                    <li class="language-selector">
+                        <select v-model="selectedLanguage" @change="changeLanguage">
+                            <option value="en">EN</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </li>
+                </ul>
+                <div class="menu-toggle" @click="toggleMenu">
+                    <i :class="menuActive ? 'fas fa-times' : 'fas fa-bars'"></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="projects-page">
+            <a href="handy-features.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Feature Helper
+            </a>
+
+            <div class="section-header">
+                <h2>Article Helper</h2>
+            </div>
+
+            <div class="project-description">
+                <p>Content to be added.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; {{ currentYear }} James Sun. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/jamessun0919-ops" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    scrolled: false,
+                    menuActive: false,
+                    selectedLanguage: 'en',
+                    currentYear: new Date().getFullYear()
+                }
+            },
+            methods: {
+                handleScroll() {
+                    this.scrolled = window.scrollY > 50;
+                },
+                toggleMenu() {
+                    this.menuActive = !this.menuActive;
+                },
+                changeLanguage() {
+                    if (this.selectedLanguage === 'zh') {
+                        window.location.href = 'article-helper-zh.html';
+                    }
+                }
+            },
+            mounted() {
+                window.addEventListener('scroll', this.handleScroll);
+            },
+            unmounted() {
+                window.removeEventListener('scroll', this.handleScroll);
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Showcase | James Sun</title>
+    <title>作業展示 | James Sun</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -192,12 +192,11 @@
     <div id="app">
         <header :class="{ 'scrolled': scrolled }">
             <nav>
-                <a href="index.html" class="logo">JAMES <span>SUN</span></a>
+                <a href="../../index-zh.html" class="logo">JAMES <span>SUN</span></a>
                 <ul class="nav-links" :class="{ 'active': menuActive }">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#portfolio">Portfolio</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="../../index-zh.html">首頁</a></li>
+                    <li><a href="../../index-zh.html#portfolio">作品集</a></li>
+                    <li><a href="../../index-zh.html#contact">聯絡我</a></li>
                     <li class="language-selector">
                         <select v-model="selectedLanguage" @change="changeLanguage">
                             <option value="en">EN</option>
@@ -212,13 +211,13 @@
         </header>
 
         <main class="projects-page">
-            <a href="index.html#portfolio" class="back-link">
-                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            <a href="vocational-training-zh.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> 返回人工智慧與資料分析
             </a>
 
             <div class="section-header">
-                <h2>From Novice to Pro, Constantly Evolving</h2>
-                <p>AI Course Projects (Instructed by Prof. Huan Chen)</p>
+                <h2>由青澀到熟練，持續更新，不斷精進</h2>
+                <p>人工智慧課程實作作品（陳煥老師指導）</p>
             </div>
 
             <div class="project-list">
@@ -230,10 +229,10 @@
                     </div>
                     <div class="project-actions">
                         <a href="https://github.com/jamessun0919-ops/HW1Helloworld" target="_blank" class="action-btn repo-btn">
-                            <i class="fab fa-github"></i> Code Repository
+                            <i class="fab fa-github"></i> 程式碼倉庫
                         </a>
                         <a href="https://jamessun0919-ops.github.io/HW1Helloworld/" target="_blank" class="action-btn demo-btn">
-                            <i class="fas fa-external-link-alt"></i> DEMO Showcase
+                            <i class="fas fa-external-link-alt"></i> DEMO展示
                         </a>
                     </div>
                 </div>
@@ -241,14 +240,14 @@
                 <div class="project-row">
                     <div class="btn-left">
                         <span class="btn-num">HW2</span>
-                        <span>My Personal Homepage</span>
+                        <span>我的個人網頁</span>
                     </div>
                     <div class="project-actions">
                         <a href="https://github.com/jamessun0919-ops/HW2MyHomepage" target="_blank" class="action-btn repo-btn">
-                            <i class="fab fa-github"></i> Code Repository
+                            <i class="fab fa-github"></i> 程式碼倉庫
                         </a>
                         <a href="https://jamessun0919-ops.github.io/HW2MyHomepage/" target="_blank" class="action-btn demo-btn">
-                            <i class="fas fa-external-link-alt"></i> DEMO Showcase
+                            <i class="fas fa-external-link-alt"></i> DEMO展示
                         </a>
                     </div>
                 </div>
@@ -256,14 +255,14 @@
                 <div class="project-row">
                     <div class="btn-left">
                         <span class="btn-num">HW3</span>
-                        <span>AI Magic Canvas</span>
+                        <span>AI魔法畫布</span>
                     </div>
                     <div class="project-actions">
                         <a href="https://github.com/jamessun0919-ops/HW3-text2images" target="_blank" class="action-btn repo-btn">
-                            <i class="fab fa-github"></i> Code Repository
+                            <i class="fab fa-github"></i> 程式碼倉庫
                         </a>
                         <a href="https://hw3-text2images02.streamlit.app/" target="_blank" class="action-btn demo-btn">
-                            <i class="fas fa-external-link-alt"></i> DEMO Showcase
+                            <i class="fas fa-external-link-alt"></i> DEMO展示
                         </a>
                     </div>
                 </div>
@@ -271,14 +270,14 @@
                 <div class="project-row">
                     <div class="btn-left">
                         <span class="btn-num">HW4</span>
-                        <span>Interactive Linear Regression Simulator</span>
+                        <span>互動式線性回歸模擬器</span>
                     </div>
                     <div class="project-actions">
                         <a href="https://github.com/jamessun0919-ops/HW4Linear-Regression-Simulator" target="_blank" class="action-btn repo-btn">
-                            <i class="fab fa-github"></i> Code Repository
+                            <i class="fab fa-github"></i> 程式碼倉庫
                         </a>
                         <a href="https://hw4linear-regression-simulator021.streamlit.app/" target="_blank" class="action-btn demo-btn">
-                            <i class="fas fa-external-link-alt"></i> DEMO Showcase
+                            <i class="fas fa-external-link-alt"></i> DEMO展示
                         </a>
                     </div>
                 </div>
@@ -286,14 +285,14 @@
                 <div class="project-row">
                     <div class="btn-left">
                         <span class="btn-num">HW5</span>
-                        <span>Machine Learning Algorithms Platform</span>
+                        <span>十大機器學習演算法互動學習平台</span>
                     </div>
                     <div class="project-actions">
                         <a href="https://github.com/jamessun0919-ops/Hw5-Top10MLplatform" target="_blank" class="action-btn repo-btn">
-                            <i class="fab fa-github"></i> Code Repository
+                            <i class="fab fa-github"></i> 程式碼倉庫
                         </a>
                         <a href="https://hw5-top10-m-lplatform-k2pz.vercel.app/" target="_blank" class="action-btn demo-btn">
-                            <i class="fas fa-external-link-alt"></i> DEMO Showcase
+                            <i class="fas fa-external-link-alt"></i> DEMO展示
                         </a>
                     </div>
                 </div>
@@ -301,14 +300,14 @@
                 <div class="project-row">
                     <div class="btn-left">
                         <span class="btn-num">HW6</span>
-                        <span>Kaggle 50 Startups Profit Prediction</span>
+                        <span>Kaggle 50家初創企業獲利預測</span>
                     </div>
                     <div class="project-actions">
                         <a href="https://github.com/jamessun0919-ops/HW6-Kaggle50StartupCrispDM" target="_blank" class="action-btn repo-btn">
-                            <i class="fab fa-github"></i> Code Repository
+                            <i class="fab fa-github"></i> 程式碼倉庫
                         </a>
                         <a href="https://jamessun0919-ops.github.io/HW6-Kaggle50StartupCrispDM/demo.html" target="_blank" class="action-btn demo-btn">
-                            <i class="fas fa-external-link-alt"></i> DEMO Showcase
+                            <i class="fas fa-external-link-alt"></i> DEMO展示
                         </a>
                     </div>
                 </div>
@@ -316,11 +315,11 @@
                 <div class="project-row">
                     <div class="btn-left">
                         <span class="btn-num">HW7</span>
-                        <span>Multiple Regression with Boston Housing Dataset</span>
+                        <span>Multiple Regression以Boston Housing Dataset為例</span>
                     </div>
                     <div class="project-actions">
                         <a href="https://github.com/jamessun0919-ops/HW7-Mutiple-regression-workflow" target="_blank" class="action-btn repo-btn">
-                            <i class="fab fa-github"></i> Code Repository
+                            <i class="fab fa-github"></i> 程式碼倉庫
                         </a>
                     </div>
                 </div>
@@ -328,14 +327,14 @@
                 <div class="project-row">
                     <div class="btn-left">
                         <span class="btn-num">HW7.1</span>
-                        <span>Logistic Regression with Iris Classification</span>
+                        <span>Logistic Regression以鳶尾花分類(Iris classification)為例</span>
                     </div>
                     <div class="project-actions">
                         <a href="https://github.com/jamessun0919-ops/HW-IRIS-classification" target="_blank" class="action-btn repo-btn">
-                            <i class="fab fa-github"></i> Code Repository
+                            <i class="fab fa-github"></i> 程式碼倉庫
                         </a>
                         <a href="https://jamessun0919-ops.github.io/HW-IRIS-classification/iris_3d_rgl.html" target="_blank" class="action-btn demo-btn">
-                            <i class="fas fa-external-link-alt"></i> DEMO Showcase
+                            <i class="fas fa-external-link-alt"></i> DEMO展示
                         </a>
                     </div>
                 </div>
@@ -343,7 +342,7 @@
                 <a href="#" class="project-btn">
                     <span class="btn-left">
                         <span class="btn-num">HW8</span>
-                        <span>Coming Soon</span>
+                        <span>待更新</span>
                     </span>
                     <i class="fas fa-arrow-right btn-icon"></i>
                 </a>
@@ -351,7 +350,7 @@
                 <a href="#" class="project-btn">
                     <span class="btn-left">
                         <span class="btn-num">HW9</span>
-                        <span>Coming Soon</span>
+                        <span>待更新</span>
                     </span>
                     <i class="fas fa-arrow-right btn-icon"></i>
                 </a>
@@ -359,7 +358,7 @@
                 <a href="#" class="project-btn">
                     <span class="btn-left">
                         <span class="btn-num">HW10</span>
-                        <span>Coming Soon</span>
+                        <span>待更新</span>
                     </span>
                     <i class="fas fa-arrow-right btn-icon"></i>
                 </a>
@@ -367,7 +366,7 @@
         </main>
 
         <footer>
-            <p>&copy; {{ currentYear }} James Sun. All rights reserved.</p>
+            <p>&copy; {{ currentYear }} James Sun. 版權所有。</p>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -384,7 +383,7 @@
                 return {
                     scrolled: false,
                     menuActive: false,
-                    selectedLanguage: 'en',
+                    selectedLanguage: 'zh',
                     currentYear: new Date().getFullYear()
                 }
             },
@@ -396,8 +395,8 @@
                     this.menuActive = !this.menuActive;
                 },
                 changeLanguage() {
-                    if (this.selectedLanguage === 'zh') {
-                        window.location.href = 'ai-projects-zh.html';
+                    if (this.selectedLanguage === 'en') {
+                        window.location.href = 'ai-projects.html';
                     }
                 }
             },

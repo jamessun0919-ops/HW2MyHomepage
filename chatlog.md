@@ -68,3 +68,63 @@
 
 **開發者**：要求建立交接資料、關閉本機測試伺服器、推送今日工作內容到 `https://github.com/jamessun0919-ops/HW2MyHomepage`，並說明本資料夾所有工作內容都推送到此倉庫。
 **Agent**：發現 git 狀態裡 `img/Turtle.jpg`、`img/brain.jpg`、`img/hero_bg.jpg` 三個檔案被標記刪除，但非本次對話中執行的操作；確認過這三個檔案早已無程式碼引用，先詢問開發者是否為其本人刪除，確認後納入本次推送。停止本機伺服器，更新 README.md／`worklog.md`／本檔案／`Handover.md`，準備 commit 並推送。
+
+**開發者**：詢問前一工作待討論事項。
+**Agent**：列出 2026-07-10 收工前提出的 7 點待決事項。
+
+**開發者**：要求啟動本地測試伺服器。
+**Agent**：以 Python `http.server` 於 port 8090 啟動。
+
+**開發者**：逐項回覆 7 點待討論事項：1. 移除「關於我」文字及圖片；2. 待補充卡片稍後修改；3. 依建議把重複樣式改共用 class；4. 稍後討論；5. 暫不處理；6. 暫不處理；7. 稍後討論。
+**Agent**：對「移除關於我」的範圍（整區塊全刪 vs. 只清文字圖片留標題）提出兩個選項詢問，開發者選整區塊全刪；執行移除（含導覽項、`app.js`／`style.css` 死程式碼、孤兒圖檔），並把 `restaurant-helper`/`turtle-soup` 四檔重複的內嵌樣式搬進 `style.css` 共用 class。
+
+**開發者**：詢問「導入截圖工具」包含哪些軟體或 skill。
+**Agent**：確認本機已裝 Chrome/Edge/Node，比較「系統瀏覽器 headless 截圖」「Playwright」「Puppeteer」「MCP Playwright server」「/run skill」五個選項的成本與適用性，建議 Playwright + 借用系統瀏覽器為最平衡的方案，交由開發者決定。
+
+**開發者**：選方案二（Playwright），要求自動下載所需元件。
+**Agent**：`npm init` 建 `package.json`、安裝 `playwright` 並下載 Chromium，寫 `scripts/screenshot.js`（桌機/手機雙尺寸批次截圖），測試成功；同時發現並回報 Playwright `fullPage` 截圖對 `background-attachment: fixed` 背景的已知失真限制。
+
+**開發者**：（截圖過程中）指出 git status 出現非本次操作造成的檔案異動（多個 SVG 被刪、多個新 jpg 出現）。
+**Agent**：主動暫停，列出異動清單並詢問是否為開發者本人操作；特別點出 `it_integration.svg` 被刪但 `app.js` 仍引用，會造成破圖風險。
+
+**開發者**：說明是自己手動把 `it_integration.svg` 換成 `profit.jpg`；要求先完成截圖工具（待辦4），再討論檔案異動（待辦7）。
+**Agent**：完成截圖工具驗證後，回頭請開發者解釋 `git status` 這個檢查流程的用途與侷限。
+
+**開發者**：詢問 `git status` 檢查流程本身的運作方式。
+**Agent**：說明其比對 HEAD/暫存區/工作目錄三層的機制、侷限（分不出誰改的、分不出因果、看不到 `.gitignore` 排除的路徑），並以本次「第二次執行才抓到異動」為例，建議每次開始新一批編輯前都檢查，而非只在 session 開頭做一次。
+
+**開發者**：裁示暫不增加新流程，維持原有檢查＋提醒即可。
+**Agent**：確認採用，回到「待補充」卡片的實際落差（`app.js` 仍指向已刪除的 `it_integration.svg`，新檔案是 `useful.jpg` 不是 `profit.jpg`），詢問要現在處理還是留到之後。
+
+**開發者**：提出「待補充」卡片改造規格：改標題「餐廳利潤管理」＋小字說明，連到新目錄頁，內含三張子卡片（班表轉換/物料控管/顧客資料整合，圖片 crew/material/customer），內容留空待補。
+**Agent**：核對圖檔實際檔名（`profit.jpg`／`Crew.jpg`／`material.jpg`／`customer.jpg`，與描述略有出入但可對應），詢問三張子卡片點擊後的行為（僅佔位 vs. 各自建空白介紹頁），開發者選後者；建立 `restaurant-profit` 目錄頁與三個子頁。
+
+**開發者**：要求把「個人興趣專題」「待補充」「最偉大的作品」三張卡片文字分別改為「益智小遊戲」「好用小功能」「最偉大作品＋女兒陛下Alyssa Sun」小字說明。
+**Agent**：改寫 `app.js` 對應欄位，英文譯名一併更新（Puzzle Game / Handy Features / Greatest Work + Her Highness Alyssa Sun）。
+
+**開發者**：要求「好用小功能」下新增「餐廳小幫手」（圖片 foodcourt，內容承接原「職訓課程小組專題」卡片）與「天氣小幫手」（圖片 weather）兩張子卡片，「職訓課程小組專題」原卡片保留圖片僅佔位。
+**Agent**：建立 `handy-features` 目錄頁，把 `restaurant-helper.html` 的訪問入口改由「餐廳小幫手」承接（含返回連結改指向新目錄頁），`vocational-training` 目錄頁裡的「職訓課程小組專題」卡片移除連結與小字說明，僅留圖＋標題。
+
+**開發者**：要求餐廳小幫手介紹頁標題改「餐廳小幫手」、副標移除；職訓課程小組專題卡片維持只佔位。
+**Agent**：詢問「只佔位」的確切程度（保留圖+標題 vs. 只留圖），開發者選前者（已符合現況，免改）；更新 `restaurant-helper*.html` 標題與 `<title>`。
+
+**開發者**：要求「益智小遊戲」也比照建立目錄頁，標題「益智小遊戲」無副標，原海龜湯內容移至新增的「AI海龜湯」卡片（圖片 useful）。
+**Agent**：建立 `puzzle-game` 目錄頁，`turtle-soup.html` 訪問入口改由「AI海龜湯」卡片承接，返回連結同步更新。
+
+**開發者**：要求「AI海龜湯」卡片圖片改 `turtle`；「好用小功能」整體更名「功能小幫手」（圖片 helper，小字說明三行：餐廳小幫手/天氣小幫手/文章小幫手）；目錄頁標題同步改名；新增「文章小幫手」卡片（圖片 read，僅佔位）。
+**Agent**：發現 `.gallery-subtitle` 沒有 `white-space: pre-line`，多行小字說明會被瀏覽器吃成一行，補上該 CSS 屬性；其餘依規格逐一改名/換圖/新增卡片。
+
+**開發者**：要求「AI海龜湯」介紹頁標題改「AI海龜湯」、副標取消；「職訓課程小組專題」與「文章小幫手」改為連到空白功能頁（範例天氣小幫手）而非純佔位。
+**Agent**：`turtle-soup*.html` 標題/副標調整；新建 `group-project(-zh).html`、`article-helper(-zh).html` 兩組空白介紹頁，把先前改成純 `<div>` 佔位的兩張卡片改回 `<a>` 連結。
+
+**開發者**：提供「天氣小幫手」正式內容（Vercel Demo 連結、GitHub Repo、專案說明：練習網路爬蟲的課堂作業）。
+**Agent**：依既有介紹頁格式（action-buttons + project-description）填入內容，中英文同步。
+
+**開發者**：詢問「今日新增多個 html 檔案，之後要依類別建資料夾存放」需要裝什麼 skill，或記錄於 CLAUDE.md。
+**Agent**：說明這不需要 skill，是專案慣例、該記在 CLAUDE.md；但指出現況是所有頁面平鋪在根目錄且用相對路徑互連，搬進分類資料夾不是搬檔案就好，所有相對路徑與反向連結都要跟著改，屬於有風險的重構，詢問是否現在就做。
+
+**開發者**：確認現在就把今天新增的所有檔案一起改進分類資料夾。
+**Agent**：先用 grep 全面清查所有跨頁引用（含 `prog-projects.html` 內嵌連結出的 `ex0602.html`／`python-work-platform.html` 兩個原本孤立的示範頁，一併納入同類別），規劃 `pages/vocational-training`／`pages/handy-features`／`pages/puzzle-game`／`pages/restaurant-profit` 四個資料夾；已由 git 追蹤的檔案用 `git mv`、新檔案用一般 `mv` 搬遷，`sed` 批次修正所有相對路徑，更新 `app.js`／`mobile-preview.html` 對應連結，掃描確認無殘留/多重前綴錯誤，截圖抽測整條連結鏈，並把資料夾規則寫入 `CLAUDE.md`。
+
+**開發者**：要求生成交接文件、關閉測試伺服器、部署至 GitHub。
+**Agent**：更新 `worklog.md`／本檔案／`Handover.md`／`README.md`，關閉本機伺服器，準備 commit 並推送。

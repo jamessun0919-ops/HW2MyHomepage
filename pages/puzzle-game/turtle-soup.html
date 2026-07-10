@@ -3,145 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interest Project - AI-Hosted Turtle Soup Puzzle Game | James Sun</title>
+    <title>AI Turtle Soup - Puzzle Game | James Sun</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-    <style>
-        body {
-            background-image: radial-gradient(circle at 10% 20%, rgba(240, 249, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 90%), url('img/puzzleparty.jpg');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
-            background-size: auto 100vh;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                background-size: cover;
-            }
-        }
-
-        .projects-page {
-            padding: 100px 24px 80px;
-            max-width: 900px;
-            margin: 0 auto;
-            min-height: 80vh;
-        }
-
-        .projects-page .section-header {
-            margin-bottom: 30px;
-        }
-
-        .projects-page .section-header p {
-            font-size: 24px;
-            color: var(--primary-color);
-            font-weight: 700;
-            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            transition: color 0.3s ease;
-            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
-        }
-
-        .back-link:hover {
-            color: var(--accent-color);
-        }
-
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 16px;
-            width: fit-content;
-            margin: 0 auto 50px;
-        }
-
-        .action-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            min-height: 92px;
-            padding: 0 48px;
-            border-radius: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            box-sizing: border-box;
-        }
-
-        .action-btn.repo-btn {
-            font-size: 28px;
-            background-color: #f1f5f9;
-            color: #334155;
-            border: 1px solid #cbd5e1;
-        }
-
-        .action-btn.repo-btn:hover {
-            background-color: #e2e8f0;
-            color: #0f172a;
-            border-color: #94a3b8;
-        }
-
-        .action-btn.demo-btn {
-            font-size: 28px;
-            background-color: var(--accent-color);
-            color: white;
-            border: 1px solid var(--accent-color);
-            box-shadow: 0 2px 6px rgba(2, 132, 199, 0.2);
-        }
-
-        .action-btn.demo-btn:hover {
-            background-color: var(--accent-hover);
-            border-color: var(--accent-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-        }
-
-        .project-description p {
-            font-size: 16px;
-            color: var(--primary-color);
-            font-weight: 500;
-            line-height: 1.9;
-            margin-bottom: 24px;
-            text-align: left;
-            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
-        }
-
-        @media (max-width: 480px) {
-            .action-btn {
-                min-height: 76px;
-                padding: 0 28px;
-            }
-
-            .action-btn.demo-btn {
-                font-size: 22px;
-            }
-        }
-    </style>
 </head>
-<body>
+<body class="project-detail-bg" style="background-image: radial-gradient(circle at 10% 20%, rgba(240, 249, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 90%), url('../../img/puzzleparty.jpg');">
     <div id="app">
         <header :class="{ 'scrolled': scrolled }">
             <nav>
-                <a href="index.html" class="logo">JAMES <span>SUN</span></a>
+                <a href="../../index.html" class="logo">JAMES <span>SUN</span></a>
                 <ul class="nav-links" :class="{ 'active': menuActive }">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#portfolio">Portfolio</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../index.html#portfolio">Portfolio</a></li>
+                    <li><a href="../../index.html#contact">Contact</a></li>
                     <li class="language-selector">
                         <select v-model="selectedLanguage" @change="changeLanguage">
                             <option value="en">EN</option>
@@ -156,13 +32,12 @@
         </header>
 
         <main class="projects-page">
-            <a href="index.html#portfolio" class="back-link">
-                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            <a href="puzzle-game.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Puzzle Game
             </a>
 
             <div class="section-header">
-                <h2>Interest Project</h2>
-                <p>AI-Hosted Turtle Soup Puzzle Game</p>
+                <h2>AI Turtle Soup</h2>
             </div>
 
             <div class="action-buttons">
