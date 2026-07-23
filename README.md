@@ -98,6 +98,5 @@
 - 📁 `pages/restaurant-profit/` - 餐廳利潤管理目錄頁 + `-schedule*`、`-material*`、`-customer*`。
 - 📁 `scripts/` - `screenshot.js`（Playwright 本機驗證工具）；詳見 `package.json`。
 - 📄 `workflow_infographic.png` - 開發流程視覺化圖表。
-- 📄 `today_workflow.md` - 逐日開發紀錄。
 - 📄 `worklog.md` / `chatlog.md` / `Handover.md` - 工作日誌、開發者與 agent 對話紀錄、交接文件。
 - 📁 `img/` - 圖片資源目錄（背景圖與各分類素材）。

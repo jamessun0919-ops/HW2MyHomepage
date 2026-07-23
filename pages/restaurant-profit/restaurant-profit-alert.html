@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>餐廳利潤管理 | James Sun</title>
+    <title>Real-time Customer Review Alert - Restaurant Profit Management | James Sun</title>
 
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,11 +13,11 @@
     <div id="app">
         <header :class="{ 'scrolled': scrolled }">
             <nav>
-                <a href="../../index-zh.html" class="logo">JAMES <span>SUN</span></a>
+                <a href="../../index.html" class="logo">JAMES <span>SUN</span></a>
                 <ul class="nav-links" :class="{ 'active': menuActive }">
-                    <li><a href="../../index-zh.html">首頁</a></li>
-                    <li><a href="../../index-zh.html#portfolio">作品集</a></li>
-                    <li><a href="../../index-zh.html#contact">聯絡我</a></li>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../index.html#portfolio">Portfolio</a></li>
+                    <li><a href="../../index.html#contact">Contact</a></li>
                     <li class="language-selector">
                         <select v-model="selectedLanguage" @change="changeLanguage">
                             <option value="en">EN</option>
@@ -32,37 +32,21 @@
         </header>
 
         <main class="projects-page">
-            <a href="../../index-zh.html#portfolio" class="back-link">
-                <i class="fas fa-arrow-left"></i> 返回作品集
+            <a href="restaurant-profit.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Restaurant Profit Management
             </a>
 
             <div class="section-header">
-                <h2>餐廳利潤管理</h2>
-                <p>智慧排班、物料管理、顧客資料</p>
+                <h2>Real-time Customer Review Alert</h2>
             </div>
 
-            <div class="feature-grid">
-                <a href="restaurant-profit-schedule-zh.html" class="feature-card">
-                    <img src="../../img/Crew.jpg" alt="班表轉換">
-                    <h3>班表轉換</h3>
-                </a>
-                <a href="restaurant-profit-material-zh.html" class="feature-card">
-                    <img src="../../img/material.jpg" alt="物料控管">
-                    <h3>物料控管</h3>
-                </a>
-                <a href="restaurant-profit-customer-zh.html" class="feature-card">
-                    <img src="../../img/customer.jpg" alt="顧客資料整合">
-                    <h3>顧客資料整合</h3>
-                </a>
-                <a href="restaurant-profit-alert-zh.html" class="feature-card">
-                    <img src="../../img/alert.png" alt="顧客評論即時警告">
-                    <h3>顧客評論即時警告</h3>
-                </a>
+            <div class="project-description">
+                <p>Content to be added.</p>
             </div>
         </main>
 
         <footer>
-            <p>&copy; {{ currentYear }} James Sun. 版權所有。</p>
+            <p>&copy; {{ currentYear }} James Sun. All rights reserved.</p>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -79,7 +63,7 @@
                 return {
                     scrolled: false,
                     menuActive: false,
-                    selectedLanguage: 'zh',
+                    selectedLanguage: 'en',
                     currentYear: new Date().getFullYear()
                 }
             },
@@ -91,8 +75,8 @@
                     this.menuActive = !this.menuActive;
                 },
                 changeLanguage() {
-                    if (this.selectedLanguage === 'en') {
-                        window.location.href = 'restaurant-profit.html';
+                    if (this.selectedLanguage === 'zh') {
+                        window.location.href = 'restaurant-profit-alert-zh.html';
                     }
                 }
             },
