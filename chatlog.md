@@ -128,3 +128,43 @@
 
 **開發者**：要求生成交接文件、關閉測試伺服器、部署至 GitHub。
 **Agent**：更新 `worklog.md`／本檔案／`Handover.md`／`README.md`，關閉本機伺服器，準備 commit 並推送。
+
+## 2026-07-23（第1階段）
+
+**開發者**：要求先讀交接文檔與（已修改的）工作規則，討論後才開始本階段工作。
+**Agent**：讀取 `Handover.md` 與 `worklog.md` 最近段落，比對 `git diff` 發現 `CLAUDE.md` 這次修改把底部具體的「檔案結構規則」（`pages/<category>` 清單、`../../` 相對路徑寫法、`app.js` link 欄位規則）整段刪除，只留開頭一句籠統描述；同時確認 Desktop 層級的 master `CLAUDE.md` 與本專案 `CLAUDE.md` 內容完全一致（同尺寸同時間戳）。提出這處刪除疑似編輯疏漏，詢問是否補回。
+**開發者**：確認是疏漏，要求補回具體規則；本階段任務選定「補齊空白佔位頁內容」。
+**Agent**：因具體規則是本專案專屬細節、不適合放進共用 master 樣板，只在 `c:\Users\User\Desktop\HW2Myhomepage\CLAUDE.md` 補回，不動 Desktop 層級的 master 檔。
+
+**Agent**：檢視 `group-project(-zh).html`／`article-helper(-zh).html` 兩個空白佔位頁，比照 `weather-helper` 的 action-buttons + project-description 樣板，詢問兩頁各自要補的內容（純文字 / DEMO+Repo連結 / 先跳過）。
+**開發者**：「職訓課程小組專題」先跳過；「文章小幫手」有 Demo/Repo 連結。
+
+**開發者**：要求開啟本機測試網頁，以手機排版呈現，只呈現中文版本（英文版本需要翻譯及修改，但翻譯品質非本次重點，不須同步呈現）。
+**Agent**：啟動 `python -m http.server 8090`；把 `mobile-preview.html` 暫時改成只顯示中文手機外框（移除英文 iframe 區塊與對應下拉選單資料），開瀏覽器導向該頁。
+
+**開發者**：提供文章小幫手 Repo（`https://github.com/jamessun0919-ops/NewsNovelCrawer`）與 Demo（`https://newsnovelcrawer.onrender.com/`）連結；要求把手機預覽下拉選單改成「首頁／人工智慧與資料分析／餐廳利潤管理／功能小幫手／意志小遊戲／最偉大作品」六項。
+**Agent**：核對實際 hub 頁檔名後，指出「最偉大作品」是外部連結（`https://jamessun0919-ops.github.io/Alyssa/`），非本專案 html 檔，無法直接放進本機 iframe 預覽（會受目標網站 X-Frame-Options 限制）；同時指出「意志小遊戲」應為「益智小遊戲」的打字誤植；並詢問文章小幫手還缺的專案說明文字。
+**開發者**：確認「意志」是打字誤植；「最偉大作品」不加入下拉選單，只留本專案 5 個 hub 頁。
+**Agent**：把下拉選單改成 5 個本地 hub 頁（首頁／人工智慧與資料分析／餐廳利潤管理／功能小幫手／益智小遊戲）。
+
+**開發者**：提供文章小幫手專案說明文字（網路爬蟲課程練習，爬取文章內文跳過廣告，自用未公開；練習爬蟲/解析防禦機制/繞過防禦機制）。
+**Agent**：依 `weather-helper-zh.html` 樣板，在 `article-helper-zh.html` 加入 action-buttons（Demo/Repo）與兩段專案說明。
+
+**開發者**：要求重新開啟修改後的本地頁面供確認。
+**Agent**：依 Debug 規則「改完程式碼要關閉 server 再重開」，先找出 port 8090 佔用的行程並關閉，重啟 `http.server`，確認回應 200 後開瀏覽器導向 `article-helper-zh.html`。
+
+**開發者**：要求以手機版格式開啟。
+**Agent**：暫時把 `mobile-preview.html` 的 iframe src 指向 `article-helper-zh.html`（不加入下拉選單），開瀏覽器確認。
+
+**開發者**：附截圖回報手機預覽顯示的內容仍是舊版「內容待補充」佔位文字，內容沒有正確載入。
+**Agent**：依 Debug 規則（開發者回報一次不正確就停止，不自行連續嘗試修正），列出三個可能原因（瀏覽器快取、iframe 獨立快取、編輯未實際寫入檔案）供開發者決定排查方向，未自行修改任何檔案。
+**開發者**：回報用瀏覽器強制重新整理（Ctrl+F5）後已正常顯示，確認是快取問題。
+
+**開發者**：要求新增「餐廳利潤管理＞班表轉換」項目，提供 Repo（`https://github.com/jamessun0919-ops/Shift-schedule`）、Demo（`https://shift-schedule-b5ne.onrender.com/`）與專案說明（輸入格狀排班 Excel/ODS、輸出橫向 Gantt 式長條圖排班表）。
+**Agent**：把 `mobile-preview.html` 的暫時測試 iframe 指向改回預設首頁；依同一套樣板在 `restaurant-profit-schedule-zh.html` 加入 action-buttons 與專案說明（僅中文版，依先前「英文暫不同步」共識）。
+
+**開發者**：要求用手機版預覽顯示班表轉換頁面，並要求把「文章小幫手」與「班表轉換」的英文版內容也同步補上（但不需要在預覽裡顯示英文版）。
+**Agent**：補寫 `article-helper.html`、`restaurant-profit-schedule.html` 兩個英文版的 action-buttons 與說明文字（直譯，非潤飾文案）；把 `mobile-preview.html` 的 iframe 暫時指向 `restaurant-profit-schedule-zh.html` 開瀏覽器確認。
+
+**開發者**：確認本機測試完成，要求推送本次工作內容並結束本階段，但本機測試伺服器暫時不關閉。
+**Agent**：整理本階段 chatlog／worklog／Handover，準備 commit 並推送；依開發者指示保留 port 8090 的伺服器不關閉。

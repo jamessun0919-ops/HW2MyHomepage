@@ -81,3 +81,12 @@
   - 原本「職訓課程小組專題」的實際內容（DEMO/Repo/說明）確定改由「餐廳小幫手」承接後，在 `vocational-training` 目錄頁新建 `group-project(-zh).html` 空白佔位介紹頁銜接。
 - 檔案結構重構：因新增大量 html 頁面，依開發者要求把今天新建與相關聯的 30 個頁面依類別搬進 `pages/<category>/`（`vocational-training`／`handy-features`／`puzzle-game`／`restaurant-profit`），修正每個檔案裡連回根目錄資源（`style.css`／`img/`／`index.html`）的相對路徑（改用 `../../`），同資料夾內頁面互連維持原檔名；同步更新 `app.js` 的 hub 連結欄位與 `mobile-preview.html` 預覽下拉選單路徑；把資料夾配置規則寫入 `CLAUDE.md`。用截圖工具抽測整條連結鏈（首頁→目錄頁→子頁，含最複雜的 `ex0602.html` 互動 Demo 頁）確認搬遷後正常運作。
 - 收工前產出交接文件（`Handover.md`）、更新 `README.md`，關閉本機測試伺服器（port 8090），推送至 GitHub。
+
+## 2026-07-23（第1階段）
+- 本階段開工前發現 `CLAUDE.md` 這次修改把底部具體的檔案結構規則（`pages/<category>` 清單、`../../` 路徑寫法、`app.js` link 欄位規則）整段刪除，確認是編輯疏漏後補回（只補本專案的 `CLAUDE.md`，不動 Desktop 層級共用的 master 樣板）。
+- 補齊「文章小幫手」（`article-helper(-zh).html`）正式內容：Demo（`https://newsnovelcrawer.onrender.com/`）、Repo（`https://github.com/jamessun0919-ops/NewsNovelCrawer`）、專案說明（網路爬蟲課程練習），中英文皆已補上（英文為直譯）。
+- 補齊「班表轉換」（`restaurant-profit-schedule(-zh).html`）正式內容：Demo（`https://shift-schedule-b5ne.onrender.com/`）、Repo（`https://github.com/jamessun0919-ops/Shift-schedule`）、專案說明，中英文皆已補上（英文為直譯）。
+- 「職訓課程小組專題」（`group-project(-zh).html`）本階段先跳過，仍為空白佔位頁。
+- 調整 `mobile-preview.html`：下拉選單改為本專案 5 個 hub 頁（首頁／人工智慧與資料分析／餐廳利潤管理／功能小幫手／益智小遊戲），移除英文版 iframe 與對應下拉資料（外部連結「最偉大作品」確認不適合放入本機 iframe 預覽，排除）。
+- 過程中一次瀏覽器快取造成「內容沒有正確載入」的誤報，依 Debug 規則列出可能原因交給開發者確認方向，未自行連續嘗試修正；開發者確認強制重新整理後已正常。
+- 開發者交代備忘：本階段收工後本機測試伺服器（port 8090）**維持開啟不關閉**，與過去慣例不同，下次開工前留意其為本次殘留還是開發者自行使用。

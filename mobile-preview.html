@@ -83,11 +83,11 @@
     <div class="toolbar">
         <label for="page-select">預覽頁面 Page：</label>
         <select id="page-select">
-            <option value="index" data-zh="index-zh.html" data-en="index.html">首頁 Home</option>
-            <option value="prog-projects" data-zh="pages/vocational-training/prog-projects-zh.html" data-en="pages/vocational-training/prog-projects.html">程式語言專案 Programming Projects</option>
-            <option value="ai-projects" data-zh="pages/vocational-training/ai-projects-zh.html" data-en="pages/vocational-training/ai-projects.html">AI 課程專案 AI Projects</option>
-            <option value="restaurant-helper" data-zh="pages/handy-features/restaurant-helper-zh.html" data-en="pages/handy-features/restaurant-helper.html">餐廳選擇小幫手 Restaurant Helper</option>
-            <option value="turtle-soup" data-zh="pages/puzzle-game/turtle-soup-zh.html" data-en="pages/puzzle-game/turtle-soup.html">個人興趣專題 Turtle Soup</option>
+            <option value="index" data-zh="index-zh.html">首頁</option>
+            <option value="vocational-training" data-zh="pages/vocational-training/vocational-training-zh.html">人工智慧與資料分析</option>
+            <option value="restaurant-profit" data-zh="pages/restaurant-profit/restaurant-profit-zh.html">餐廳利潤管理</option>
+            <option value="handy-features" data-zh="pages/handy-features/handy-features-zh.html">功能小幫手</option>
+            <option value="puzzle-game" data-zh="pages/puzzle-game/puzzle-game-zh.html">益智小遊戲</option>
         </select>
     </div>
 
@@ -95,13 +95,7 @@
         <div class="frame-block">
             <div class="frame-label">中文版</div>
             <div class="phone-frame">
-                <iframe id="frame-zh" src="index-zh.html" title="中文版手機預覽"></iframe>
-            </div>
-        </div>
-        <div class="frame-block">
-            <div class="frame-label">English</div>
-            <div class="phone-frame">
-                <iframe id="frame-en" src="index.html" title="English mobile preview"></iframe>
+                <iframe id="frame-zh" src="pages/restaurant-profit/restaurant-profit-schedule-zh.html" title="中文版手機預覽"></iframe>
             </div>
         </div>
     </div>
@@ -109,11 +103,9 @@
     <script>
         const select = document.getElementById('page-select');
         const frameZh = document.getElementById('frame-zh');
-        const frameEn = document.getElementById('frame-en');
         select.addEventListener('change', () => {
             const option = select.options[select.selectedIndex];
             frameZh.src = option.dataset.zh;
-            frameEn.src = option.dataset.en;
         });
     </script>
 </body>
