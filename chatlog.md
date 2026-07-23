@@ -185,3 +185,35 @@
 
 **開發者**：確認圖示可用，要求正式實作。
 **Agent**：新增 `manifest.json`（`name`/`short_name` 中文、`start_url: "./index-zh.html"`、`display: standalone`、`theme_color: #0f172a`、`background_color: #ffffff`、icons 192/512）；只在 `index-zh.html` 的 `<head>` 加入 `<link rel="manifest">`、`theme-color` meta、`apple-touch-icon`、`apple-mobile-web-app-capable`/`title`（其他頁面不動）；未加 Service Worker（依決策不需要）；用 `curl`＋`node -e` 驗證 `manifest.json` 是否為合法 JSON、中文字有沒有正確編碼（過程中 bash 終端機把 UTF-8 中文顯示成亂碼，用 `xxd` 比對原始位元組與 Node 直接 `JSON.parse` 確認是終端機顯示問題，檔案本身編碼正確），並確認靜態資源皆可透過本機伺服器正常存取。
+
+**開發者**：要求推送 PWA 功能至倉庫。
+**Agent**：先補寫這段討論的 chatlog 逐字稿，再 commit＋推送（`f2dba3a`）；因開發者未表示要結束本階段，`worklog.md`／`Handover.md` 暫不更新。
+
+**開發者**：要求在班表轉換頁面新增「使用說明」按鍵（連結 `https://shift-schedule-b5ne.onrender.com/manual.html`），完成後直接推送。
+**Agent**：沿用既有 `repo-btn` 樣式（不新增 CSS class），插在「點擊開始」與「程式碼倉庫」按鍵中間，中英文版同步加入，commit＋推送（`bcc5faa`）。
+
+**開發者**：詢問手機實測時要如何重新整理才能看到更新。
+**Agent**：先詢問測試的是 GitHub Pages 上線網址還是本機伺服器（兩者做法不同），並說明手機瀏覽器沒有桌機 Ctrl+F5 那種強制重整，列出 iOS Safari 私密瀏覽分頁／Android Chrome 清快取兩種做法。
+**開發者**：說明是 GitHub Pages 上線網址、iOS Safari，但是用 PWA 加到主畫面的捷徑進入，無法使用私密瀏覽。
+**Agent**：說明本站沒有 Service Worker，卡住的是標準 WebKit HTTP 快取而非 PWA 特有快取層；因加到主畫面的捷徑是獨立全螢幕 WebView、沒有網址列也叫不出私密瀏覽，改為建議依序嘗試：(1) 完全關閉 App（非切背景）再從主畫面重開；(2) 設定→Safari→進階→網站資料，刪除該網域資料再重開；(3) 設定→Safari→清除瀏覽紀錄和網站資料（會清所有網站，較大範圍）；(4) 都清了還是沒更新則可能是 GitHub Pages CDN 還沒更新完，等幾分鐘再試。並說明不需要刪除主畫面圖示重加，那只是重建捷徑不會清底層快取。
+
+**開發者**：詢問網站的圖片設計風格是否有記錄在文檔內。
+**Agent**：全文檢索 `*.md` 找到 `worklog.md`（2026-07-10 那次收工前）記錄的「作品集卡片圖片生成風格對照表」（AI課程/餐廳利潤：科技風格；小幫手：彩色素描風格；小遊戲/偉大作品：卡通風格），回報給開發者；同時發現專案根目錄有一份 `today_workflow.md`，內容提到已經被移除的 Hero 即時時鐘等舊版設計、與現況（`Handover.md`）不一致，主動詢問是否要清理。
+
+**開發者**：確認可以刪除 `today_workflow.md`。
+**Agent**：用 grep 確認除了 `README.md` 的檔案結構列表外沒有其他地方引用該檔案；`git rm today_workflow.md`，同時移除 `README.md` 裡對應的失效引用（屬於本次刪除動作造成的孤兒，非主動更新 README 內容）。
+
+**開發者**：要求在餐廳利潤管理下新增「顧客評論即時警告」功能欄位，圖片用 `img/alert.png`，完成後與前述變更（today_workflow 清理）一同推送。
+**Agent**：確認 `img/alert.png` 存在；比照物料控管/顧客資料整合的既有佔位頁樣式，新建 `restaurant-profit-alert(-zh).html` 空白介紹頁，並在兩個 hub 頁的 `feature-grid` 加入第 4 張卡片；連同 `today_workflow.md` 清理一起 commit＋推送（`fbdb87f`）。
+
+**開發者**：提供「物料控管」專案說明文字（PWA 手機操作介面／盤點週期設定／即時計算物料差異量／差異過高通知主管）。
+**Agent**：確認本機伺服器（port 8090）雖然收到背景任務「stopped」通知，但實際 `netstat` 確認行程仍在監聽，無需重開；依海龜湯頁面「粗體小標＋全形空格縮排內文」的既有排版慣例，填入 `restaurant-profit-material-zh.html`；因當下沒有 Demo/Repo 連結，維持純文字說明；告知英文版本次先不同步，並詢問是否需要。
+
+**開發者**：要求英文版說明同步加入（只翻譯不潤飾，不須顯示），並宣告本階段後續工作都比照此規則進行。
+**Agent**：補上 `restaurant-profit-material.html` 英文版內容（直譯）。
+
+**開發者**：提供「顧客資料整合」專案說明文字（現有系統資料分散、資訊孤島痛點、精準行銷推送）。
+**Agent**：依既有排版慣例填入 `restaurant-profit-customer-zh.html`，並依開發者剛宣告的規則同步補上 `restaurant-profit-customer.html` 英文版（直譯）。
+
+**開發者**：要求推送後結束本階段工作。
+**Agent**：commit＋推送物料控管／顧客資料整合的中英文說明（`155c183`），整理本階段 worklog／Handover 準備收工。
