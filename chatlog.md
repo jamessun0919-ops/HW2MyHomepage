@@ -168,3 +168,20 @@
 
 **開發者**：確認本機測試完成，要求推送本次工作內容並結束本階段，但本機測試伺服器暫時不關閉。
 **Agent**：整理本階段 chatlog／worklog／Handover，準備 commit 並推送；依開發者指示保留 port 8090 的伺服器不關閉。
+
+## 2026-07-23（第2階段）
+
+**開發者**：計畫將網站加入 PWA（Progressive Web App）功能，詢問需要補充哪些資料。
+**Agent**：檢查現有 `img/` 無任何方形 logo/icon、`style.css` 現有主色（`--primary-color: #0f172a`、`--accent-color: #0284c7`）後，列出 5 個需要開發者決定的關鍵點：(1) 目標範圍只要可安裝還是也要離線可用（並指出離線需要 Service Worker，等於在使用者端也引入一層快取，跟開發者一直在意的「快取造成看不到最新內容」是同一種風險）；(2) 雙語網站（`index.html`/`index-zh.html` 兩個獨立根頁）manifest 只能指定一個 `start_url`，要選預設語言；(3) App 圖示素材；(4) 品牌色是否沿用站內既有色票；(5) 若選離線功能，快取範圍多大。
+
+**開發者**：逐項回覆：1. 只要可安裝；2. 預設語言中文版；3. 圖示以 `img/family.png` 修改；4. 品牌色沿用；5. 不做離線功能。
+**Agent**：確認「不做離線」不影響「可安裝」目標——Chrome/Edge/Android 現行可安裝判定標準已不強制要求 Service Worker，iOS Safari 的「加入主畫面」本來就不看它；檢視 `family.png`（2148×1952，媽媽/女兒/爸爸三人合照，近方形），因縮到手機圖示尺寸後三張臉細節會糊掉，詢問要保留全家合照構圖（置中裁方形，只裁掉左右邊緣）還是聚焦單一人物（女兒特寫）。
+
+**開發者**：選保留全家（素面置中裁）。
+**Agent**：追加詢問 manifest 的 `<link>` 標籤要加在全站每一頁還是只加首頁兩個進入頁（兩者改動範圍差異達 2 個檔案 vs. 約 30 個檔案）。
+
+**開發者**：只加中文版首頁，說明英文版通常只有桌面使用者會點閱瀏覽，不需要安裝入口。
+**Agent**：用 Python Pillow 對 `family.png` 做置中方形裁切（原圖近方形，裁掉左右邊緣各 98px）後縮成 512×512／192×192，存為 `img/icon-512.png`／`img/icon-192.png`，秀縮圖給開發者確認。
+
+**開發者**：確認圖示可用，要求正式實作。
+**Agent**：新增 `manifest.json`（`name`/`short_name` 中文、`start_url: "./index-zh.html"`、`display: standalone`、`theme_color: #0f172a`、`background_color: #ffffff`、icons 192/512）；只在 `index-zh.html` 的 `<head>` 加入 `<link rel="manifest">`、`theme-color` meta、`apple-touch-icon`、`apple-mobile-web-app-capable`/`title`（其他頁面不動）；未加 Service Worker（依決策不需要）；用 `curl`＋`node -e` 驗證 `manifest.json` 是否為合法 JSON、中文字有沒有正確編碼（過程中 bash 終端機把 UTF-8 中文顯示成亂碼，用 `xxd` 比對原始位元組與 Node 直接 `JSON.parse` 確認是終端機顯示問題，檔案本身編碼正確），並確認靜態資源皆可透過本機伺服器正常存取。
